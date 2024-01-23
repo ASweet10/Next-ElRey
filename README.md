@@ -6,32 +6,32 @@ Edit page by modifying `app/page.tsx`
 Transparent images: HiClipArt.com
 
 Add new route
--create new folder with page.js inside
---Use endpoint as folder name (i.e. localhost:3000/register, folder Register)
--Same for Subdirectories (/api/user is api folder with user folder inside that)
+1. create new folder with page.js inside
+2. Use endpoint as folder name (i.e. localhost:3000/register, folder Register)
+3. Same for Subdirectories (/api/user is api folder with user folder inside that)
 
-#Next.js Pros
-##-Can build sites to generate statically (no server required)
-##-Comes with TypeScript integrated; everything set up & ready to go
--Images are optimized to load faster and with better performance
+Next.js Pros
+1. Can build sites to generate statically (no server required)
+2. Comes with TypeScript integrated; everything set up & ready to go
+3. Images are optimized to load faster and with better performance
+   
 Server-side rendering (Pros)
---App's ability to display web page on server instead of rendering in browser
---JS rendered on server, then fully rendered page sent to client
---Makes pages load faster, improves UX
---Search Engines can easily index content because it's rendered before page is loaded; ideal for SEO
---Helps to efficiently load pages for users with slow internet / old devices
+1. App's ability to display web page on server instead of rendering in browser
+2. JS rendered on server, then fully rendered page sent to client
+3. Makes pages load faster, improves UX
+4. Search Engines can easily index content because it's rendered before page is loaded; ideal for SEO
+5. Helps to efficiently load pages for users with slow internet / old devices
 
 Next.js Cons
--Not flexible in terms of routing; Good for simple apps but difficult if many routes needed
--Next.js is harder to learn than React
-Server-side rendering (Cons)
---Can be costly & resource intensive; Not default for websites & server has to render all content
---Rendering static HTML is efficient; rendering bigger apps server-side can increase load times because of CPU bottleneck
---
+1. Not flexible in terms of routing; Good for simple apps but difficult if many routes needed
+2. Next.js is harder to learn than React
+3. Server-side rendering (Cons)
+4. Can be costly & resource intensive; Not default for websites & server has to render all content
+5. Rendering static HTML is efficient; rendering bigger apps server-side can increase load times because of CPU bottleneck
 
 Next.js Use cases vs. React
--
--
+1.
+2.
 
 Steps to add Google credentials authentication
 Documentation: next-auth.js.org/providers/google
