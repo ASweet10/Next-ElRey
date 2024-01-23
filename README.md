@@ -10,9 +10,9 @@ Add new route
 --Use endpoint as folder name (i.e. localhost:3000/register, folder Register)
 -Same for Subdirectories (/api/user is api folder with user folder inside that)
 
-Next.js Pros
--Can build sites to generate statically (no server required)
--Comes with TypeScript integrated; everything set up & ready to go
+#Next.js Pros
+##-Can build sites to generate statically (no server required)
+##-Comes with TypeScript integrated; everything set up & ready to go
 -Images are optimized to load faster and with better performance
 Server-side rendering (Pros)
 --App's ability to display web page on server instead of rendering in browser
