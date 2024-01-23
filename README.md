@@ -1,6 +1,4 @@
-Run dev server: npm run dev
--http://localhost:3000
-
+Dev server:   npm run dev       http://localhost:3000
 Edit page by modifying `app/page.tsx`
 
 Transparent images: HiClipArt.com
@@ -24,14 +22,15 @@ Server-side rendering (Pros)
 
 Next.js Cons
 1. Not flexible in terms of routing; Good for simple apps but difficult if many routes needed
-2. Next.js is harder to learn than React
-3. Server-side rendering (Cons)
-4. Can be costly & resource intensive; Not default for websites & server has to render all content
-5. Rendering static HTML is efficient; rendering bigger apps server-side can increase load times because of CPU bottleneck
+2. Smaller dev community than react; less support
+   
+Server-side rendering (Cons)
+1. Can be costly & resource intensive; Not default for websites & server has to render all content
+2. Rendering static HTML is efficient; rendering bigger apps server-side can increase load times because of CPU bottleneck
 
-Next.js Use cases vs. React
-1.
-2.
+When to use...
+Next.js: Build a static website or JAMstack app
+React: Large, complex web app with complex routing and data-driven components
 
 Steps to add Google credentials authentication
 Documentation: next-auth.js.org/providers/google
