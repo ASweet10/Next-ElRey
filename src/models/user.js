@@ -2,25 +2,16 @@ import { Schema, model, models } from "mongoose"
 import bcrypt from 'bcrypt'
 
 const UserSchema = new Schema({
+    name: { type: String },
     email: { type: String, required: true, unique: true },
-    password: { 
-        type: String, 
-        required: true,
-        validate: pw => {
-            if( !pw?.length || pw.length < 8 ) {
-                new Error('Password must be at least 8 characters')
-                return false;
-            }
-
-            return pw
-        }
-    }
+    password: { type: String },
+    image: { type: String },
+    phone: { type: String },
+    streetAddress: { type: String },
+    zipCode: { type: String },
+    city: { type: String },
+    usState: { type: String },
+    admin: { type: Boolean, default: false },
 }, {timestamps: true})
-
-UserSchema.post('validate', function (user) {
-    const unHashedPW = user.password
-    const salt = bcrypt.genSaltSync(10)
-    user.password = bcrypt.hashSync(unHashedPW, salt)
-})
 
 export const User = models?.User || model('User', UserSchema)

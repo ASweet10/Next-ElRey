@@ -21,7 +21,7 @@ export default function Header() {
         <header className='flex justify-between items-center px-2 md:px-8'>
         <Link className='text-white flex gap-2 text-3xl font-semibold items-center' href={'/'}>
           <LuCrown className='text-white text-4xl'/>
-          Los Tacos Del Rey
+          El Rey
         </Link>
         <nav className='flex gap-4 font-semibold items-center'>
           <div className='flex gap-4 items-center'>
