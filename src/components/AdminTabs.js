@@ -17,15 +17,14 @@ export default function AdminTabs ({ isAdmin }) {
             </Link>
             { isAdmin && (
                 <>
-                    <Link 
-                        className={`rounded-full py-2 px-4 text-white bg-primary" + ${path === '/categories' ? 'bg-primary' : 'bg-gray-800'}`} 
-                        href={'/categories'}
+                    <Link href={'/categories'}
+                        className={`rounded-full py-2 px-4 text-white bg-primary" + ${path === '/categories' ? 'bg-primary' : 'bg-gray-800'}`}
                     >
                         Categories
                     </Link>
-                    <Link 
-                        className={`rounded-full py-2 px-4 text-white bg-primary" + ${path === '/menu-items' ? 'bg-primary' : 'bg-gray-800'}`} 
-                        href={'/menu-items'}
+                    <Link href={'/menu-items'}
+                        // Using path.includes to check if menu-items present anywhere in url (for menu-items/new as well)
+                        className={`rounded-full py-2 px-4 text-white bg-primary" + ${path.includes('menu-item') ? 'bg-primary' : 'bg-gray-800'}`}
                     >
                         Menu Items
                     </Link>

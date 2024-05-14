@@ -91,7 +91,7 @@ export default function CategoriesPage() {
             <h1 className="mt-4 text-2xl font-bold">Edit Category</h1>
             <div className="grid grid-cols-3 w-1/2 flex-col my-4 gap-2">
                 { categories?.length > 0 && categories.map(cat => (
-                    <div className="flex flex-col bg-gray-300 rounded-lg p-4 px-4 text-black gap-4 items-center justify-center">
+                    <div key={cat._id} className="flex flex-col bg-gray-300 rounded-lg p-4 px-4 text-black gap-4 items-center justify-center">
                         <button
                             onClick={() => {
                                 setEditedCategory(cat)
