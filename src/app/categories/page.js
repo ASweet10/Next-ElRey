@@ -52,6 +52,28 @@ export default function CategoriesPage() {
         })
     }
 
+    async function handleDeleteCategory(_id) {
+        
+        const deletionPromise = new Promise(async (resolve, reject) => {
+            const response = await fetch('/api/categories?_id=' + _id, {
+                method: 'DELETE',
+            })
+            if(response.ok) {
+                resolve()
+            } else {
+                reject()
+            }
+        })
+
+        fetchCategories()
+
+        await toast.promise(deletionPromise, {
+            loading: 'Deleting category...',
+            success: 'Category deleted!',
+            error: 'There was an error. Please try again.'
+        })
+    }
+
     if(!data.admin) {
         return (
             <div className="flex pt-10 justify-center text-xl">Not an admin</div>
@@ -80,27 +102,38 @@ export default function CategoriesPage() {
                             onChange={ e => setCategoryName(e.target.value) }
                         />
                     </div>
-                    <div>
+                    <div className="flex gap-2">
                         <button type="submit" className="px-12 py-2 rounded-lg bg-primary text-white text-lg font-semibold">
                             { editedCategory ? 'Update' : 'Create' }
+                        </button>
+                        <button type="button" className="px-12 py-2 rounded-lg bg-primary text-white text-lg font-semibold"
+                            onClick={() => {
+                                setEditedCategory(null)
+                                setCategoryName('')
+                            }}>
+                            Cancel
                         </button>
                     </div>
                 </div>
 
             </form>
-            <h1 className="mt-4 text-2xl font-bold">Edit Category</h1>
             <div className="grid grid-cols-3 w-1/2 flex-col my-4 gap-2">
                 { categories?.length > 0 && categories.map(cat => (
                     <div key={cat._id} className="flex flex-col bg-gray-300 rounded-lg p-4 px-4 text-black gap-4 items-center justify-center">
-                        <button
+                        <div
                             onClick={() => {
                                 setEditedCategory(cat)
                                 setCategoryName(cat.name)
                             }}
-                            className="text-lg font-bold"
+                            className="grow text-lg font-bold"
                         >
                             {cat.name}
-                        </button>
+                        </div>
+
+                        <div className="flex gap-1">
+                            <button type="button">Edit</button>
+                            <button type="button" onClick={() => handleDeleteCategory(cat._id)}>Delete</button>
+                        </div>
                         <Image src='/burrito.png' width={50} height={50}/>
                     </div>
                 ))}
