@@ -7,6 +7,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { redirect, useParams } from 'next/navigation'
 import MenuItemForm from "@/components/MenuItemForm"
+import DeleteButton from "@/components/DeleteButton"
 
 export default function EditMenuItemPage() {
     
@@ -53,6 +54,27 @@ export default function EditMenuItemPage() {
         setRedirectToItems(true)
     }
 
+    async function handleDeleteMenuItem() {
+        const deletionPromise = new Promise(async (resolve, reject) => {
+            const response = await fetch('/api/menu-items?_id='+id, {
+                method: 'DELETE'
+            })
+            if(response.ok) {
+                resolve()
+            } else {
+                reject()
+            }
+        })
+        
+        setRedirectToItems(true)
+
+        await toast.promise(deletionPromise, {
+            loading: 'Deleting item...',
+            success: 'Deleted',
+            error: 'Error',
+        })
+    }
+
     if(redirectToItems) {
         return redirect('/menu-items')
     }
@@ -79,6 +101,9 @@ export default function EditMenuItemPage() {
                 </Link>
             </div>
             <MenuItemForm menuItem={menuItem} onSubmit={handleEditMenuItem}/>
+            <div className="max-w-md mx-auto mt-4">
+                <DeleteButton label="Delete this item" onDelete={handleDeleteMenuItem}/>
+            </div>
         </section>
     )
 }

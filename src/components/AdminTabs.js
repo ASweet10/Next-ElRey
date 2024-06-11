@@ -34,6 +34,12 @@ export default function AdminTabs ({ isAdmin }) {
                     >
                         Users
                     </Link>
+                    <Link 
+                        className={`rounded-full py-2 px-4 text-white bg-primary" + ${path === '/orders' ? 'bg-primary' : 'bg-gray-800'}`} 
+                        href={'/orders'}
+                    >
+                        Orders
+                    </Link>
                 </>
             )}
         </div>

@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react"
 import { useProfileInfo } from "@/hooks/useProfileInfo"
 import { toast } from "react-hot-toast"
 import Image from "next/image"
+import DeleteButton from "@/components/DeleteButton"
 
 export default function CategoriesPage() {
     const { loading, data } = useProfileInfo()
@@ -129,12 +130,13 @@ export default function CategoriesPage() {
                         >
                             {cat.name}
                         </div>
+                        
+                        <Image src='/burrito.png' width={50} height={50}/>
 
                         <div className="flex gap-1">
-                            <button type="button">Edit</button>
-                            <button type="button" onClick={() => handleDeleteCategory(cat._id)}>Delete</button>
+                            <button type="button" className="p-3 mt-2 rounded-lg bg-primary text-white text-lg font-semibold">Edit</button>
+                            <DeleteButton label="Delete" onDelete={() => handleDeleteCategory(cat._id)}/>
                         </div>
-                        <Image src='/burrito.png' width={50} height={50}/>
                     </div>
                 ))}
             </div>

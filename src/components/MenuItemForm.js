@@ -1,5 +1,5 @@
 import EditableImage from "@/components/EditableImage"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import MenuItemDetailProps from "./MenuItemDetailProps"
 
 export default function MenuItemForm({onSubmit, menuItem}) {
@@ -10,10 +10,20 @@ export default function MenuItemForm({onSubmit, menuItem}) {
     const [ basePrice, setBasePrice ] = useState(menuItem?.basePrice || 0)
     const [ sizes, setSizes ] = useState(menuItem?.sizes || [])
     const [ extraIngredientPrices, setExtraIngredientPrices ] = useState(menuItem?.extraIngredientPrices || [])
+    const [ categories, setCategories ] = useState([])
+    const [ category, setCategory ] = useState(menuItem?.category || '')
+    
+    useEffect(() => {
+        fetch('/api/categories').then(res => {
+            res.json().then(categories => {
+                setCategories(categories)
+            })
+        })
+    }, [])
 
     return (
         <form className="flex flex-col items-start max-w-xl mx-auto gap-2 mt-8" 
-            onSubmit={e => onSubmit(e, {image, name, description, basePrice, sizes, extraIngredientPrices})}
+            onSubmit={e => onSubmit(e, {image, name, description, category, basePrice, sizes, extraIngredientPrices})}
         >
             <div className="flex gap-4">
                 <div className="max-w-[200px]">
@@ -28,6 +38,14 @@ export default function MenuItemForm({onSubmit, menuItem}) {
                     <input className="py-2 px-4 rounded-lg text-black"
                         type="text" value={description} onChange={e => setDescription(e.target.value)}
                     />
+                    <label className="text-lg">Category</label>
+                    <select value={category} onChange={e => setCategory(e.target.value)}
+                        className="p-2 rounded-lg text-black" 
+                    >
+                        { categories?.length > 0 && categories.map(cat => (
+                            <option key={cat._id} value={cat._id} className="text-black font-semibold">{cat.name}</option>
+                        ))}
+                    </select>
                     <label className="text-lg">Base price</label>
                     <input className="py-2 px-4 rounded-lg text-black"
                         type="text" value={basePrice} onChange={e => setBasePrice(e.target.value)}
