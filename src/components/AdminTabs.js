@@ -29,7 +29,7 @@ export default function AdminTabs ({ isAdmin }) {
                         Menu Items
                     </Link>
                     <Link 
-                        className={`rounded-full py-2 px-4 text-white bg-primary" + ${path === '/users' ? 'bg-primary' : 'bg-gray-800'}`} 
+                        className={`rounded-full py-2 px-4 text-white bg-primary" + ${path.includes('/users') ? 'bg-primary' : 'bg-gray-800'}`} 
                         href={'/users'}
                     >
                         Users
