@@ -26,8 +26,8 @@ export default function Header() {
         <nav className='flex gap-4 font-semibold items-center'>
           <div className='flex gap-4 items-center'>
             <Link href={'/menu'}>Menu</Link>
-            <Link href={'/about'}>About</Link>
-            <Link href={'/contact'}>Contact</Link>
+            <Link href={'/#about'}>About</Link>
+            <Link href={'/#contact'}>Contact</Link>
           </div>
           <div className='flex gap-2 items-center'>
 

@@ -1,7 +1,13 @@
 Dev server:   npm run dev       http://localhost:3000
 Edit page by modifying `app/page.tsx`
-
 Transparent images: HiClipArt.com
+
+Current bugs to fix
+- Automatically logs you in when you click "login"
+- clicking on menu item to edit brings up form but doesn't fill in info.
+Have to refresh page. 
+
+
 
 Add new route
 1. create new folder with page.js inside
