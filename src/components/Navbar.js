@@ -3,12 +3,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { GiChicken } from "react-icons/gi"
 import { LuCrown } from "react-icons/lu"
-import { useSession } from 'next-auth/react'
-import { signOut } from 'next-auth/react'
+import { FaCartShopping } from "react-icons/fa6"
+import { useSession, signOut } from 'next-auth/react'
+import { CartContext } from './AppContext'
+import { useContext } from 'react'
 
 export default function Header() {
   const session = useSession()
-  console.log(session)
+  //console.log(session)
   const status = session?.status
 
   const userData = session?.data?.user
@@ -16,6 +18,7 @@ export default function Header() {
   if( userName && userName.includes(' ')) {
     userName = userName.split(' ')[0] // Split name around space if present & use first element
   }
+  const { cartProducts } = useContext(CartContext)
 
     return (
         <header className='flex justify-between items-center px-2 md:px-8'>
@@ -53,9 +56,13 @@ export default function Header() {
                 </Link>
               </>
             )}
+            
+            <div className='flex gap-2 mx-4 items-center'>
+              <FaCartShopping className='text-2xl'/>
+              <Link href={'/cart'}>{cartProducts?.length || 0}</Link>
+            </div>
 
           </div>
         </nav>
       </header>
-    )
-}
+    )}

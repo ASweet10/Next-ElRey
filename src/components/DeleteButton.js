@@ -15,7 +15,7 @@ export default function DeleteButton({ label, onDelete }) {
                             Cancel
                         </button>
                         <button type="button" onClick={() => {
-                            onDelete
+                            onDelete()
                             setShowConfirm(false)
                         }}
                             className="p-3 mt-4 rounded-lg bg-primary text-white text-lg font-semibold"
