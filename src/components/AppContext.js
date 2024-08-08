@@ -1,8 +1,23 @@
 'use client'
 import { SessionProvider } from 'next-auth/react'
 import { createContext, useEffect, useState } from 'react'
+import toast from 'react-hot-toast';
 
 export const CartContext = createContext({})
+
+export function cartProductPrice(cartProduct) {
+    let price = cartProduct.basePrice;
+    if (cartProduct.size) {
+        price += cartProduct.size.price;
+    }
+    if (cartProduct.extras?.length > 0) {
+        for (const extra of cartProduct.extras) {
+            price += extra.price
+        }
+    }
+
+    return price
+}
 
 // useSession in Navbar needs to be wrapped in SessionProvider
 // This is used in layout.js
@@ -43,6 +58,7 @@ export function AppProvider({children}) {
             saveCartProductsToLocalStorage(newCartProducts)
             return newCartProducts
         })
+        toast.success('Item removed')
     }
 
     return (

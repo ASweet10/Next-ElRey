@@ -57,10 +57,10 @@ export default function Header() {
               </>
             )}
             
-            <div className='flex gap-2 mx-4 items-center'>
+            <Link href={'/cart'} className='relative'>
               <FaCartShopping className='text-2xl'/>
-              <Link href={'/cart'}>{cartProducts?.length || 0}</Link>
-            </div>
+              <span className='absolute -top-3.5 -right-3.5 bg-primary text-white py-0.5 px-2 rounded-full '>{cartProducts?.length || 0}</span>
+            </Link>
 
           </div>
         </nav>

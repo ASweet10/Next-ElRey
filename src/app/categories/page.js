@@ -54,7 +54,6 @@ export default function CategoriesPage() {
     }
 
     async function handleDeleteCategory(_id) {
-        
         const deletionPromise = new Promise(async (resolve, reject) => {
             const response = await fetch('/api/categories?_id=' + _id, {
                 method: 'DELETE',
@@ -66,13 +65,13 @@ export default function CategoriesPage() {
             }
         })
 
-        fetchCategories()
-
         await toast.promise(deletionPromise, {
             loading: 'Deleting category...',
             success: 'Category deleted!',
             error: 'There was an error. Please try again.'
         })
+
+        fetchCategories()
     }
 
     if(!data.admin) {
@@ -116,30 +115,28 @@ export default function CategoriesPage() {
                         </button>
                     </div>
                 </div>
-
             </form>
+
             <div className="grid grid-cols-3 w-1/2 flex-col my-4 gap-2">
                 { categories?.length > 0 && categories.map(cat => (
                     <div key={cat._id} className="flex flex-col bg-gray-300 rounded-lg p-4 px-4 text-black gap-4 items-center justify-center">
-                        <div
-                            onClick={() => {
-                                setEditedCategory(cat)
-                                setCategoryName(cat.name)
-                            }}
-                            className="grow text-lg font-bold"
-                        >
-                            {cat.name}
-                        </div>
-                        
                         <Image src='/burrito.png' width={50} height={50}/>
-
+                        <div className="grow">{cat.name}</div>
                         <div className="flex gap-1">
-                            <button type="button" className="p-3 mt-2 rounded-lg bg-primary text-white text-lg font-semibold">Edit</button>
+                            <button className="p-3 mt-2 rounded-lg bg-primary text-white text-lg font-semibold"
+                                onClick={() => {
+                                    setEditedCategory(cat)
+                                    setCategoryName(cat.name)
+                                }}
+                            >
+                                Edit
+                            </button>
                             <DeleteButton label="Delete" onDelete={() => handleDeleteCategory(cat._id)}/>
                         </div>
                     </div>
                 ))}
             </div>
+
         </section>
     )
 }
