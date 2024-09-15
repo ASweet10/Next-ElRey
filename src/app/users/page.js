@@ -33,7 +33,7 @@ export default function UsersPage() {
             <AdminTabs isAdmin={data.admin} />
             <div className="mt-8">
                 { users?.length > 0 && users.map(user => (
-                    <div key={users._id} className="flex bg-gray-300 rounded-lg mb-2 p-4 text-black gap-3 items-center">
+                    <div key={user._id} className="flex bg-gray-300 rounded-lg mb-2 p-4 text-black gap-3 items-center">
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 grow">
                             <div className="text-gray-700">
                                 { user.name && (<span>{user.name}</span>) }

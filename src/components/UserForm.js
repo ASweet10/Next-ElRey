@@ -25,42 +25,43 @@ export default function UserForm({ user, onSave }) {
         if (propertyName === 'state') setUSState(value)
     }
     return (
-        <div className="flex gap-4 items-center">
-            <div className="flex">
-                <div className="flex flex-col rounded-lg p-4 gap-3 justify-center">
-                    <EditableImage link={image} setLink={setImage} />
-                </div>
+        <div className="md:flex gap-4 mx-4 items-center">
+            <div className="relative flex flex-col rounded-lg p-2 gap-2 justify-center">
+                <EditableImage link={image} setLink={setImage} />
             </div>
 
             <form className="flex flex-col gap-2 text-black" 
                 onSubmit={ e => onSave(e, {
-                    name:userName, image, phone, email, streetAddress, city, zipCode, usState
+                    name:userName, image, phone, email, streetAddress, city, zipCode, usState, admin
                 }) 
             }>
                 <label className="text-white">Name</label>
-                <input type="text" value={userName} onChange={(e)=> setUserName(e.target.value)} 
-                    placeholder="First and last name" className="p-2 rounded-lg" 
+                <input type="text" value={userName} onChange={ e => setUserName(e.target.value)} 
+                    placeholder="First and last name" className="block w-72 md:w-full p-2 rounded-lg" 
                 />
                 <label className="text-white">Email</label>
-                <input type="email" value={user?.email} disabled={true} className="p-2 rounded-lg text-white" />
+                <input type="email" value={user?.email} disabled={true} className="w-72 md:w-full p-2 rounded-lg text-white" />
                 
-                <AddressInputs 
+                <AddressInputs setAddressProp={handleAddressChange}
                     addressProps={{ phone, streetAddress, city, zipCode, usState }}
-                    setAddressProps={handleAddressChange}
                 />
 
                 {loggedInUserData?.admin && (
                     <div>
                         <label className="p-2 flex items-center gap-2 text-white text-lg">
                             <input id="adminCheckbox" type="checkbox" value={'1'}
-                                checked={admin} onClick={e => setAdmin(e.target.checked)} 
+                                checked={admin} onChange={e => setAdmin(e.target.checked)} 
                             />
                             Admin
                         </label>
                     </div>
                 )}
 
-                <button type="submit" className="px-12 py-3 mt-4 rounded-lg bg-primary text-white text-lg font-semibold">Save Changes</button>
+                <button type="submit"
+                    className="w-72 md:w-full px-12 py-3 mt-4 rounded-lg bg-primary text-white text-lg font-semibold"
+                >
+                    Save Changes
+                </button>
             </form>
         </div>
     )

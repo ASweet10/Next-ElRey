@@ -2,10 +2,11 @@
 import { CartContext, cartProductPrice } from "@/components/AppContext"
 import { useContext, useState, useEffect } from "react"
 import Image from "next/image"
-import { FaRegTrashAlt } from "react-icons/fa"
+
 import AddressInputs from "@/components/AddressInputs"
 import { useProfileInfo } from "@/hooks/useProfileInfo"
 import toast from "react-hot-toast"
+import CartProduct from "@/components/CartProduct"
 
 export default function CartPage () {
     const { cartProducts, removeCartProduct } = useContext(CartContext)
@@ -13,22 +14,66 @@ export default function CartPage () {
     const { data:profileData } = useProfileInfo()
 
     useEffect(() => {
+        if (typeof window !== 'undefined') {
+            if (window.location.href.includes('canceled=1')) {
+                toast.error('Payment failed :(')
+            }
+        }
+    }, [])
+
+    useEffect(() => {
         if(profileData?.city) {
             const { phone, streetAddress, city, zipCode, usState } = profileData
             const dataFromProfile = { phone, streetAddress, city, zipCode, usState }
             setAddress(dataFromProfile)
         }
+        console.log(cartProducts)
     }, [profileData])
     
-    let total = 0
+    let subTotal = 0
     for (const product of cartProducts) {
-        total += cartProductPrice(product)
+        subTotal += cartProductPrice(product)
     }
     
     function handleAddressChange(propName, value) {
         setAddress(prevAddress => {
             return {...prevAddress, [propName]:value}
         })
+    }
+    
+    async function proceedToCheckout(e) {
+        e.preventDefault()
+        const promise = new Promise((resolve, reject) => {
+            fetch('/api/checkout', {
+                method: 'POST',
+                headers: {'Content-Type':'application/json'},
+                body: JSON.stringify({
+                    address, cartProducts,
+                })
+            }).then(async (response) => {
+                if (response.ok) {
+                    resolve()
+                    window.location = await response.json()
+                } else {
+                    reject()
+                }
+            })
+        })
+
+        await toast.promise(promise, {
+            loading: 'Preparing your order...',
+            success: 'Redirecting to payment...',
+            error: 'Something went wrong... Please try again',
+        })
+    }
+
+    if (cartProducts?.length === 0) {
+        return (
+            <section className="mt-8 text-center">
+                <h1 className="text-4xl text-primary font-bold">Cart</h1>
+                <p className="mt-4">Your cart is empty.</p>
+            </section>
+        )
     }
     
     return (
@@ -40,51 +85,31 @@ export default function CartPage () {
                         <div>No items in cart</div>
                     )}
                     { cartProducts?.length > 0 && cartProducts.map((product, index) => (
-                        <div className="flex items-center gap-4 mb-2 border-b py-2" key={product._id}>
-                            <div className="w-24">
-                                <Image width={240} height={240} src={product.image} alt={''} />
-                            </div>
-                            <div className="grow"> {/* Grow aligns elements evenly */}
-                                <h3 className="text-xl font-bold">{product.name}</h3>
-                                { product?.size && (
-                                    <div className="text-sm text-gray-300">
-                                        <span className="font-semibold">{product?.size?.name} <span className="font-bold text-lg">${product?.basePrice + product?.size?.price}</span></span>
-                                    </div>
-                                )}
-                                { product?.extras?.length > 0 && (
-                                    <div className="text-sm text-gray-300">
-                                        {product?.extras?.map(extra => (
-                                            <div>
-                                                {extra.name} <span className="font-bold text-lg">${extra.price}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                            <div className="text-xl font-bold">
-                                ${cartProductPrice(product)}
-                            </div>
-                            <div className="ml-2">
-                                <button type="button" onClick={() => removeCartProduct(index)}
-                                    className='text-white rounded-lg px-4 py-2 border-2 border-white hover:bg-primary'
-                                >
-                                    <FaRegTrashAlt />
-                                </button>
-                            </div>
-                        </div>      
+                        <CartProduct key={index} product={product} onRemove={removeCartProduct} index={index} />
                     ))}
-                    <div className="py-4 text-right pr-16 text-xl">
-                        Subtotal: <span className="font-bold">${total}</span>
+                    <div className="py-2 text-right pr-16 text-xl">
+                        Subtotal: <span className="font-bold">${subTotal}</span>
+                    </div>
+                    <div className="py-2 text-right pr-16 text-xl">
+                        Delivery Fee: <span className="font-bold">$5</span>
+                    </div>
+                    <div className="py-2 text-right pr-16 text-xl">
+                        Total: <span className="font-bold">${subTotal + 5}</span>
                     </div>
                 </div>
 
                 <div className="flex flex-col gap-2 mx-6 bg-gray-900 rounded-lg p-4">
                     <h2 className="font-bold text-xl">Checkout</h2>
-                    <form className="flex flex-col gap-2">
+                    <form className="flex flex-col gap-2" onSubmit={proceedToCheckout}>
                         <AddressInputs 
                             addressProps={address}
                             setAddressProp={handleAddressChange}
                         />
+                        <button type="submit"
+                            className="flex p-2 items-center justify-center gap-2 text-xl bg-primary rounded-lg"
+                        >
+                            Pay ${subTotal !== 0 ? subTotal + 5 : 0}
+                        </button>
                     </form>
                 </div>
             </div>

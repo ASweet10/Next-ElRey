@@ -1,7 +1,6 @@
 'use client'
 import Image from "next/image"
 import { useSession } from 'next-auth/react'
-import burritoImg from '../../../public/burrito.png'
 import { useState, useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 import AdminTabs from "@/components/AdminTabs"
@@ -59,7 +58,7 @@ export default function ProfilePage() {
         <section className="py-16 flex flex-col justify-center items-center">
             <AdminTabs isAdmin={isAdmin} />
             <div className="max-w-xl mx-auto">
-                <UserForm user={user} />
+                <UserForm user={user} onSave={handleUpdateProfileInfo} />
             </div>
         </section>
     )

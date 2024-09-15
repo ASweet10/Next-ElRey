@@ -52,10 +52,6 @@ export default function MenuItemsPage() {
                             <div className="text-lg font-bold">{item.name}</div>
                             <div className="font-semibold">{item.description}</div>
                         </div>
-
-                        <button className="ml-4 text-red-600">
-                            X
-                        </button>
                     </Link>
                 ))}
             </div>

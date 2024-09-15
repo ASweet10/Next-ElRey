@@ -17,7 +17,7 @@ export default function MenuItem (menuItem) {
         if( hasOptions && !showPopup) {
             setShowPopup(true) // Open popup to make changes
             return
-        } 
+        }
         addToCart(menuItem, selectedSize, selectedExtras)
         await new Promise(resolve => setTimeout(resolve, 600))
         setShowPopup(false)
@@ -102,36 +102,24 @@ export default function MenuItem (menuItem) {
                                     ))}
                                 </div>
                             )}
-                            <div className="flex flex-col gap-1 mt-6">
-                                <FlyingButton
-                                    targetTop={'5%'}
-                                    targetLeft={'95%'}
-                                    src={image}
+                            <FlyingButton targetTop={'5%'} targetLeft={'95%'} src={image}>
+                                <div className='bg-primary text-white rounded-full px-24 py-2'
+                                    onClick={handleAddToCartButtonClick}
                                 >
-                                    <div className='bg-primary text-white rounded-full px-6 py-2'
-                                        onClick={handleAddToCartButtonClick}
-                                    >
-                                        Add to cart ${selectedPrice}
-                                    </div>
-                                </FlyingButton>
-                                <button 
-                                    onClick={() => setShowPopup(false)}
-                                    className='bg-slate-200 text-black rounded-full px-6 py-2'
-                                >
-                                    Cancel
-                                </button>
-                            </div>
-
+                                    Add to cart <span className="text-xl font-semibold">${selectedPrice}</span>
+                                </div>
+                            </FlyingButton>
+                            <button 
+                                onClick={() => setShowPopup(false)}
+                                className='bg-slate-200 text-black rounded-full px-6 py-2'
+                            >
+                                Cancel
+                            </button>
                         </div>
-
                     </div>
                 </div>
             )}
-            <MenuItemTile 
-                onAddToCart={handleAddToCartButtonClick}
-                {...menuItem}
-            />
-
+            <MenuItemTile onAddToCart={handleAddToCartButtonClick} {...menuItem} />
         </>
     )
 }

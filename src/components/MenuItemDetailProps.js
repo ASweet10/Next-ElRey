@@ -37,7 +37,7 @@ export default function MenuItemDetailProps ({ name, label, props, setProps }) {
             </button>
             <div className={isOpen ? 'block' : 'hidden'}>
                 { props?.length > 0 && props.map((prop, index) => (
-                    <div className="flex gap-2 items-end" key={prop.id}>
+                    <div className="flex gap-2 items-end" key={index}>
                         <div>
                             <label className="text-black">Name</label>
                             <input type="text" placeholder="Extra price" className="rounded-lg p-1 text-black"

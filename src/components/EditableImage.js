@@ -27,7 +27,7 @@ export default function EditableImage({link, setLink}) {
     return (
         <>
             { link && (
-                <Image src={link} className="rounded-lg" alt="UserProfile" width={250} height={250}/>
+                <Image src={link} className="rounded-lg" alt="UserProfile" width={200} height={200}/>
             )}
             { !link && (
                 <div className="text-white text-lg text-center">

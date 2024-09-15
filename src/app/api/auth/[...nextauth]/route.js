@@ -1,8 +1,8 @@
-import NextAuth from 'next-auth'
+import NextAuth, { getServerSession } from 'next-auth'
 import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google"
 import * as mongoose from 'mongoose'
-import {User} from '@/models/User'
+import { User } from '@/models/user'
 import bcrypt from 'bcrypt'
 
 export const authOptions = {
@@ -35,6 +35,22 @@ export const authOptions = {
           }
         })
   ],
+}
+
+// Verify user is admin; If not, blocks endpoint access & no data returned
+export async function isAdmin() {
+  const session = await getServerSession(authOptions)
+  const userEmail = session?.user?.email
+
+  if (!userEmail) {
+    return false
+  }
+  const userInfo = await User.findOne({email: userEmail})
+  if (!userInfo) {
+    return false
+  }
+
+  return userInfo.admin
 }
 
 const handler = NextAuth( authOptions )

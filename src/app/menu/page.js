@@ -22,7 +22,7 @@ export default function MenuPage() {
                     <div className="text-center">
                         <h1 className="text-5xl font-bold">{cat.name}</h1>
                     </div>
-                    <div className="grid grid-cols-3 gap-3 my-8">
+                    <div className="grid md:grid-cols-3 gap-3 my-8">
                         { menuItems?.filter(item => item.category === cat._id).map(item => (
                             <MenuItem {...item} key={item._id} />
                         ))}

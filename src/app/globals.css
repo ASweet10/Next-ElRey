@@ -27,9 +27,8 @@ body {
 }
 
 section.hero {
-  @apply grid;
+  @apply block md:grid;
   grid-template-columns: .4fr .6fr;
-  padding-top: 110px;
 }
 
 /* width */

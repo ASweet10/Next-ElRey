@@ -88,8 +88,8 @@ export default function CategoriesPage() {
     return (
         <section className="py-16 flex flex-col items-center">
             <AdminTabs isAdmin={data.admin} />
-            <form className="flex flex-col items-start max-w-xl mx-auto gap-2" onSubmit={handleSubmitCategory}>
-                <div className="flex gap-2 items-end">
+            <form className="flex flex-col items-start max-w-md md:max-w-xl mx-auto gap-2" onSubmit={handleSubmitCategory}>
+                <div className="flex flex-col md:flex-row gap-2 items-center md:items-end">
                     <div className="flex flex-col gap-1">
                         <label className="text-xl">
                             { editedCategory ? 'Update: ' : 'New category' }
@@ -117,11 +117,10 @@ export default function CategoriesPage() {
                 </div>
             </form>
 
-            <div className="grid grid-cols-3 w-1/2 flex-col my-4 gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 md:w-1/2 flex-col my-4 gap-2">
                 { categories?.length > 0 && categories.map(cat => (
                     <div key={cat._id} className="flex flex-col bg-gray-300 rounded-lg p-4 px-4 text-black gap-4 items-center justify-center">
-                        <Image src='/burrito.png' width={50} height={50}/>
-                        <div className="grow">{cat.name}</div>
+                        <div className="grow text-2xl font-bold">{cat.name}</div>
                         <div className="flex gap-1">
                             <button className="p-3 mt-2 rounded-lg bg-primary text-white text-lg font-semibold"
                                 onClick={() => {
