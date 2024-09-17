@@ -3,7 +3,6 @@ import { useContext, useState } from "react"
 import toast from "react-hot-toast"
 import MenuItemTile from "./MenuItemTile"
 import Image from "next/image"
-import FlyingButton from 'react-flying-item'
 
 export default function MenuItem (menuItem) {
     const { image, name, description, basePrice, sizes, extraIngredientPrices } = menuItem
@@ -19,6 +18,7 @@ export default function MenuItem (menuItem) {
             return
         }
         addToCart(menuItem, selectedSize, selectedExtras)
+        toast.success('Item added')
         await new Promise(resolve => setTimeout(resolve, 600))
         setShowPopup(false)
     }
@@ -102,16 +102,13 @@ export default function MenuItem (menuItem) {
                                     ))}
                                 </div>
                             )}
-                            <FlyingButton targetTop={'5%'} targetLeft={'95%'} src={image}>
-                                <div className='bg-primary text-white rounded-full px-24 py-2'
-                                    onClick={handleAddToCartButtonClick}
-                                >
-                                    Add to cart <span className="text-xl font-semibold">${selectedPrice}</span>
-                                </div>
-                            </FlyingButton>
-                            <button 
-                                onClick={() => setShowPopup(false)}
-                                className='bg-slate-200 text-black rounded-full px-6 py-2'
+                            <button onClick={handleAddToCartButtonClick}
+                                className='bg-primary text-white rounded-full px-24 py-2'
+                            >
+                                Add to cart <span className="text-xl font-semibold">${selectedPrice}</span>
+                            </button>
+                            <button onClick={() => setShowPopup(false)}
+                                className='bg-slate-200 text-black rounded-full px-32 py-2'
                             >
                                 Cancel
                             </button>
