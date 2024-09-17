@@ -1,5 +1,4 @@
 import { FaRegArrowAltCircleRight } from "react-icons/fa"
-import FlyingButton from 'react-flying-item'
 
 export default function AddToCartButton({hasSizesOrExtras, basePrice, image, onClick }) {
     if (!hasSizesOrExtras) {
