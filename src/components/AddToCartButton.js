@@ -4,17 +4,11 @@ import FlyingButton from 'react-flying-item'
 export default function AddToCartButton({hasSizesOrExtras, basePrice, image, onClick }) {
     if (!hasSizesOrExtras) {
         return (
-            <div className="border-primary bg-primary text-white rounded-lg text-lg flex p-2">
-                <FlyingButton 
-                    src={image}
-                    targetTop={'5%'}
-                    targetLeft={'95%'}
-                >
-                    <div onClick={onClick}>
-                        Add to cart ${basePrice}
-                    </div>
-                </FlyingButton>
-            </div>
+            <button onClick={onClick}
+                className="border-primary bg-primary text-white rounded-lg text-lg flex p-2"
+            >
+                Add to cart ${basePrice}
+            </button>
         )
     }
     
