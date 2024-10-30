@@ -1,3 +1,8 @@
+Stripe (Backend terminal)
+1. stripe login
+2. stripe listen --forward-to localhost:3000/api/webhook
+3. Test card: 4242 4242 4242 4242
+
 Next.js Pros
 1. Static website generation (no server required)
 2. Automatic TypeScript integration

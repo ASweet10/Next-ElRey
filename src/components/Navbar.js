@@ -23,7 +23,7 @@ export default function Header() {
   const { cartProducts } = useContext(CartContext)
 
     return (
-        <header>
+        <header className='p-4'>
           <div className='flex gap-20 md:hidden'>
             <Link className='text-white flex gap-2 text-3xl font-semibold items-center' href={'/'}>
               <LuCrown className='text-white text-4xl'/>
@@ -48,7 +48,7 @@ export default function Header() {
               className='flex flex-col md:hidden p-4 bg-gray-200 rounded-lg mt-2 gap-4 text-center text-primary text-xl font-semibold'
             >
               <Link href={'/menu'}>Menu</Link>
-              <Link href={'/#about'}>About</Link>
+              <Link href={'/about'}>About</Link>
               <Link href={'/#contact'}>Contact</Link>
 
               { status === 'authenticated' && (
@@ -84,7 +84,7 @@ export default function Header() {
             <nav className='flex gap-4 font-semibold items-center'>
               <div className='flex gap-6 text-xl'>
                 <Link href={'/menu'}>Menu</Link>
-                <Link href={'/#about'}>About</Link>
+                <Link href={'/about'}>About</Link>
                 <Link href={'/#contact'}>Contact</Link>
               </div>
               <div className='flex gap-4 items-center text-xl'>
@@ -115,7 +115,7 @@ export default function Header() {
                 <Link href={'/cart'} className='relative'>
                   <FaCartShopping className='text-2xl'/>
                   { cartProducts?.length > 0 && (
-                    <span className='absolute -top-3.5 -right-3.5 bg-primary text-white py-0.5 px-2 rounded-full '>{cartProducts?.length}</span>
+                    <span className='absolute -top-3.5 -right-3.5 bg-primary text-white py-[1px] px-1 rounded-full'>{cartProducts?.length}</span>
                   )}
 
                 </Link>

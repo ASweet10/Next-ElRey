@@ -26,10 +26,14 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+/*
+Old hero, was 40/60 split with text & image
+
 section.hero {
   @apply block md:grid;
   grid-template-columns: .4fr .6fr;
 }
+*/
 
 /* width */
 ::-webkit-scrollbar {
