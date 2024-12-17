@@ -1,65 +1,37 @@
-'use client'
-import React, { useState, useEffect, useRef } from 'react'
-import Image from "next/image"
-import Link from "next/link"
+import React from 'react'
 import { FaRegArrowAltCircleRight } from "react-icons/fa"
+import Link from "next/link"
+import Image from 'next/image'
 
-export default function Hero() {
-    const [ videoIndex, setVideoIndex ] = useState(0)
-    const videoRefs = useRef([])
-    const videoSources = [
-        '/hero_grill.mp4',
-        '/hero_ingredients.mp4',
-        'hero_tortillas.mp4',
-        '/hero_friends.mp4',
-        'hero_barbecue.mp4',
-    ]
-
-    useEffect(() => {
-        const video = videoRefs.current[videoIndex]
-        video.play()
-
-        video.onended = () => {
-            const nextIndex = ( videoIndex + 1) % videoSources.length
-            setVideoIndex(nextIndex)
-        }
-    }, [videoIndex])
-
-    return (
-        <section className="md:pt-4">
-            <div className="relative w-full h-[500px]">
-                { videoSources.map((src, index) => (
-                    <video key={index} ref={element => (videoRefs.current[index] = element)} src={src} muted
-                        style={{
-                            display: index === videoIndex ? 'block' : 'none',
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'cover',
-                        }}
-                    />
-                ))}
-            </div>
-            <div className="pt-12 text-center mx-6 md:mx-40">
-                <h1 className="text-4xl font-semibold leading-normal">Your day just got a whole lot better</h1>
-                <p className="my-4 text-gray-500">Try our award-winning burritos, tacos, and homemade salsas. Plus soups and sides made to order and 6 different sauces. The possibilities are endless!</p>
-                <div className="flex gap-4 justify-center">
-                    <Link href={'/menu'} 
-                        className="bg-primary text-white font-semibold px-8 py-4 rounded-full flex items-center gap-2"
+const Hero = () => {
+  return (
+    <div className="app__graniteBg text-center min-h-[100vh]">
+        <div className='flex flex-col md:flex-row mx-16 md:mx-28 pt-28 gap-20 items-center'>
+            <div className='flex flex-col items-center md:w-1/2'>
+                <h1 className="text-4xl md:text-5xl font-bold font-cormorant leading-normal">Mexican Street Food Done Right</h1>
+                <p className="my-4 text-gray-300 text-base md:text-lg">Try our award-winning burritos, tacos, and homemade salsas. Plus soups and sides made to order and 6 different sauces. The possibilities are endless!</p>
+                <div className="flex gap-4 justify-center mt-8">
+                    <Link href={'/menu'}
+                        className="bg-yellow-700 hover:bg-yellow-600 text-white font-semibold px-3 py-1 rounded-full flex items-center gap-2 font-cormorant"
                     >
                         Menu
-                        <FaRegArrowAltCircleRight className='text-xl' />
+                        <FaRegArrowAltCircleRight className='text-lg' />
                     </Link>
                     <Link href={'/about'} 
-                        className="bg-slate-800 text-white px-4 py-2 md:py-4 rounded-full flex items-center gap-2 font-semibold"
+                        className="bg-gray-800 hover:bg-gray-700 text-white px-3 py-3 rounded-full flex items-center gap-2 font-semibold font-cormorant"
                     >
                         Learn more
-                        <FaRegArrowAltCircleRight className='text-xl' />
+                        <FaRegArrowAltCircleRight className='text-lg' />
                     </Link>
-                </div>
+                </div> 
             </div>
-            {/* <div className="relative md:block">
-                <Image src='/nachos.jpg' layout='responsive' width={500} height={300} className="object-contain rounded-lg" alt='Burrito' />
-            </div> */}
-        </section>
-    )
+
+            <div className="md:w-1/2 relative">
+                <Image src='/nachos.jpg' layout='responsive' width={400} height={200} className="object-contain rounded-lg" alt='Burrito' />
+            </div>
+        </div>
+    </div>
+  )
 }
+
+export default Hero

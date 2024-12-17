@@ -16,12 +16,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className='scroll-smooth'>
       <body className={poppins.className}>
-        <main className='max-w-6xl mx-auto'>
+        <main className='mx-auto'>
           <AppProvider>
             <Toaster />
             <Navbar />
             {children}
-            <Footer />
           </AppProvider>
         </main>
       </body>

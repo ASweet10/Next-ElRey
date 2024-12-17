@@ -49,22 +49,16 @@ export default function MenuItem (menuItem) {
             {showPopup && (
                 <div 
                     onClick={() => setShowPopup(false)}
-                    className="flex items-center justify-center fixed top-0 left-0 right-0 bg-black/80"
+                    className="flex items-center justify-center fixed top-0 left-0 right-0 bg-black/80 min-h-[100vh]"
                 >
                     <div
                         onClick={e => e.stopPropagation()} // Stops setShowPopup from firing when user clicks modal item window
                         className="bg-slate-800 my-8 p-4 rounded-lg max-w-md"
                     >
                         <div className="overflow-y-scroll p-2" style={{maxHeight: 'calc(100vh - 100px)'}}>
-                            <h2 className="text-3xl font-bold text-center text-white mb-4">{name}</h2>
-                            <Image src={image} alt={name} width={300} height={200} className="mx-auto" />
-                            <p className="text-center text-gray-300 text-sm mb-4">{description}</p>
-                            <p className="text-center text-gray-300 text-sm mb-4">{description}</p>
-                            <p className="text-center text-gray-300 text-sm mb-4">{description}</p>
-                            <p className="text-center text-gray-300 text-sm mb-4">{description}</p>
-                            <p className="text-center text-gray-300 text-sm mb-4">{description}</p>
-                            <p className="text-center text-gray-300 text-sm mb-4">{description}</p>
-                            <p className="text-center text-gray-300 text-sm mb-4">{description}</p>
+                            <h2 className="text-3xl font-bold text-center text-white mb-3">{name}</h2>
+                            <Image src={image} alt={name} width={300} height={200} className="mx-auto rounded-lg" />
+                            <p className="text-center text-gray-300 text-lg my-3">{description}</p>
                             { sizes?.length > 0 && (
                                 <div>
                                     <h3 className="text-lg font-bold">Sizes</h3>
@@ -102,16 +96,19 @@ export default function MenuItem (menuItem) {
                                     ))}
                                 </div>
                             )}
-                            <button onClick={handleAddToCartButtonClick}
-                                className='bg-primary text-white rounded-full px-24 py-2'
-                            >
-                                Add to cart <span className="text-xl font-semibold">${selectedPrice}</span>
-                            </button>
-                            <button onClick={() => setShowPopup(false)}
-                                className='bg-slate-200 text-black rounded-full px-32 py-2'
-                            >
-                                Cancel
-                            </button>
+                            <div className="flex flex-col justify-center items-center gap-1 mt-4">
+                                <button onClick={handleAddToCartButtonClick}
+                                    className='bg-yellow-700 text-white rounded-full px-14 py-1'
+                                >
+                                    Add to cart - <span className="text-2xl font-semibold">${selectedPrice}</span>
+                                </button>
+                                <button onClick={() => setShowPopup(false)}
+                                    className='bg-slate-200 text-black rounded-full px-24 py-2'
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 </div>

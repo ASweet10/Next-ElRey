@@ -16,13 +16,13 @@ export default function MenuPage() {
     }, [])
     
     return (
-        <section className="mt-8">
-            {categories?.length > 0 && categories.map(cat => (
-                <div key={cat._id} className="flex flex-col items-center text-center justify-center my-8">
+        <section className="app__graniteBg py-8 flex flex-col gap-32">
+            {categories?.length > 0 && categories.sort((a, b) => a.index - b.index).map(cat => (
+                <div key={cat.index} className="flex flex-col items-center text-center justify-center">
                     <div className="text-center">
-                        <h1 className="text-5xl font-bold">{cat.name}</h1>
+                        <h1 className="text-6xl font-bold">{cat.name}</h1>
                     </div>
-                    <div className="grid md:grid-cols-3 gap-3 my-8">
+                    <div className="grid md:grid-cols-4 my-8">
                         { menuItems?.filter(item => item.category === cat._id).map(item => (
                             <MenuItem {...item} key={item._id} />
                         ))}

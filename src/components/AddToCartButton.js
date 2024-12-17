@@ -4,7 +4,7 @@ export default function AddToCartButton({hasSizesOrExtras, basePrice, image, onC
     if (!hasSizesOrExtras) {
         return (
             <button onClick={onClick}
-                className="border-primary bg-primary text-white rounded-lg flex p-2"
+                className="bg-yellow-700 text-white rounded-lg flex p-2"
             >
                 Add to cart ${basePrice}
             </button>
@@ -12,7 +12,7 @@ export default function AddToCartButton({hasSizesOrExtras, basePrice, image, onC
     }
     
     return (
-        <button className="flex p-2 items-center gap-2 bg-primary rounded-lg" type="button"
+        <button className="flex p-3 items-center gap-2 bg-yellow-700 rounded-lg" type="button"
             onClick={onClick}
             >
                 <span>Add to cart (from ${basePrice})</span>

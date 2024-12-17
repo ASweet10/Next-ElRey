@@ -10,6 +10,9 @@ const config: Config = {
     extend: {
       colors: {
         primary: '#6e1a20',
+      },
+      fontFamily: {
+        'cormorant': ['Cormorant']
       }
     },
   },

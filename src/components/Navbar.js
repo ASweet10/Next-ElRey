@@ -23,8 +23,9 @@ export default function Header() {
   const { cartProducts } = useContext(CartContext)
 
     return (
-        <header className='p-4'>
-          <div className='flex gap-20 md:hidden'>
+        <header className='pt-4 md:px-12 h-20 app__graniteBg z-50'>
+          {/* Mobile */}
+          <div className='flex gap-20 md:hidden px-12'>
             <Link className='text-white flex gap-2 text-3xl font-semibold items-center' href={'/'}>
               <LuCrown className='text-white text-4xl'/>
               El Rey
@@ -34,7 +35,7 @@ export default function Header() {
               <Link href={'/cart'} className='relative'>
                 <FaCartShopping className='text-2xl'/>
                 { cartProducts?.length > 0 && (
-                  <span className='absolute -top-3.5 -right-3.5 bg-primary text-white py-0.5 px-2 rounded-full '>{cartProducts?.length}</span>
+                  <span className='absolute -top-3.5 -right-3.5 bg-yellow-700 text-white py-0.5 px-2 rounded-full '>{cartProducts?.length}</span>
                 )}
               </Link>
               <button onClick={() => setNavOpen(navOpen => !navOpen)} className='p-2'>
@@ -42,10 +43,11 @@ export default function Header() {
               </button>
             </div>
           </div>
-
+          
+          {/* Mobile Popup */}
           {navOpen && (
             <div onClick={() => setNavOpen(false)}
-              className='flex flex-col md:hidden p-4 bg-gray-200 rounded-lg mt-2 gap-4 text-center text-primary text-xl font-semibold'
+              className='flex flex-col absolute w-full md:hidden p-3 bg-gray-200 rounded-lg mt-2 gap-4 text-center text-yellow-700 text-xl font-semibold'
             >
               <Link href={'/menu'}>Menu</Link>
               <Link href={'/about'}>About</Link>
@@ -53,13 +55,12 @@ export default function Header() {
 
               { status === 'authenticated' && (
                 <>
-                <Link href={'/profile'}>Hello {userName}</Link>
-                <button 
-                  onClick={() => signOut()} 
-                  className='bg-primary text-white rounded-full px-6 py-2'
-                >
-                  Logout
-                </button>
+                  <Link href={'/profile'}>Hello {userName}</Link>
+                  <button onClick={() => signOut()} 
+                    className='bg-yellow-700 hover:bg-yellow-600 text-white rounded-full px-6 py-2'
+                  >
+                    Logout
+                  </button>
                 </>
               )}
               {/* May need to be 'unauthenticated' */}
@@ -68,7 +69,7 @@ export default function Header() {
                   <Link href={'/login'} className='text-white rounded-full px-6 py-2'>
                     Login
                   </Link>
-                  <Link href={'/register'} className='bg-primary text-white rounded-full px-6 py-2'>
+                  <Link href={'/register'} className='bg-yellow-700 primary text-white rounded-full px-6 py-2'>
                     Register
                   </Link>
                 </>
@@ -76,6 +77,7 @@ export default function Header() {
             </div>
           )}
 
+          {/* Desktop */}
           <div className='hidden md:flex justify-between items-center px-2 md:px-8'>
             <Link className='text-white flex gap-2 text-4xl font-semibold items-center' href={'/'}>
               <LuCrown className='text-white text-5xl'/>
@@ -94,7 +96,7 @@ export default function Header() {
                   <Link href={'/profile'}>Hello {userName}</Link>
                   <button 
                     onClick={() => signOut()} 
-                    className='bg-primary text-white rounded-full px-6 py-2'
+                    className='bg-yellow-700 hover:bg-yellow-600 text-white rounded-full px-6 py-2'
                   >
                     Logout
                   </button>
@@ -106,7 +108,7 @@ export default function Header() {
                     <Link href={'/login'} className='text-white rounded-full px-6 py-2'>
                       Login
                     </Link>
-                    <Link href={'/register'} className='bg-primary text-white rounded-full px-6 py-2'>
+                    <Link href={'/register'} className='bg-yellow-700 hover:bg-yellow-600 text-white rounded-full px-6 py-2'>
                       Register
                     </Link>
                   </>
@@ -115,7 +117,7 @@ export default function Header() {
                 <Link href={'/cart'} className='relative'>
                   <FaCartShopping className='text-2xl'/>
                   { cartProducts?.length > 0 && (
-                    <span className='absolute -top-3.5 -right-3.5 bg-primary text-white py-[1px] px-1 rounded-full'>{cartProducts?.length}</span>
+                    <span className='absolute -top-3.5 -right-3.5 bg-yellow-700 hover:bg-yellow-600 text-white py-[1px] px-1 rounded-full'>{cartProducts?.length}</span>
                   )}
 
                 </Link>

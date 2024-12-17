@@ -11,9 +11,9 @@ export async function GET() {
 
 export async function POST(req) {
     mongoose.connect(process.env.MONGO_URL)
-    const { name } = await req.json()
+    const { name, index } = await req.json()
     if (await isAdmin()) {
-        const categoryDoc = await Category.create({name})
+        const categoryDoc = await Category.create({name, index})
         return Response.json(categoryDoc)
     } else {
         return Response.json({})
@@ -22,9 +22,9 @@ export async function POST(req) {
 
 export async function PUT(req) {
     mongoose.connect(process.env.MONGO_URL)
-    const {_id, name} = await req.json()
+    const {_id, name, index} = await req.json()
     if (await isAdmin()) {
-        await Category.updateOne({_id}, {name}) // Update document with this id; Change name
+        await Category.updateOne({_id}, {name, index}) // Update document with this id; Change name
     }    
     return Response.json(true)
 }

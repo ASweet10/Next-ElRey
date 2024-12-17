@@ -10,6 +10,7 @@ import DeleteButton from "@/components/DeleteButton"
 export default function CategoriesPage() {
     const { loading, data } = useProfileInfo()
     const [ categoryName, setCategoryName ] = useState("")
+    const [ categoryIndex, setCategoryIndex ] = useState()
     const [ categories, setCategories ] = useState("")
     const [ editedCategory, setEditedCategory ] = useState(null)
 
@@ -28,7 +29,7 @@ export default function CategoriesPage() {
     async function handleSubmitCategory(e) {
         e.preventDefault()
         const creationPromise = new Promise(async (resolve, reject) => {
-           const data = { name: categoryName } // Data for POST
+           const data = { name: categoryName, index: categoryIndex } // Data for POST
            if (editedCategory) { // If updating... 
             data._id = editedCategory._id // Add _id to data
            }
@@ -39,6 +40,7 @@ export default function CategoriesPage() {
             })
 
             setCategoryName('')
+            setCategoryIndex()
             fetchCategories()
             if (response.ok) {
                 resolve()
@@ -89,18 +91,28 @@ export default function CategoriesPage() {
         <section className="py-16 flex flex-col items-center">
             <AdminTabs isAdmin={data.admin} />
             <form className="flex flex-col items-start max-w-md md:max-w-xl mx-auto gap-2" onSubmit={handleSubmitCategory}>
-                <div className="flex flex-col md:flex-row gap-2 items-center md:items-end">
+                <div className="flex flex-col gap-2 items-center">
                     <div className="flex flex-col gap-1">
-                        <label className="text-xl">
+                        <label className="text-2xl text-center">
                             { editedCategory ? 'Update: ' : 'New category' }
                             { editedCategory && (
                                 <> <b>{ editedCategory.name }</b> </>
                             )}
                         </label>
-                        <input type="text" className="py-2 px-4 rounded-lg text-black" 
-                            value={ categoryName }
-                            onChange={ e => setCategoryName(e.target.value) }
-                        />
+                        <div className="flex items-center gap-3">
+                            <label className="w-1/4 text-xl text-white">Name</label>
+                            <input type="text" className="w-3/4 py-2 px-4 rounded-lg text-black" 
+                                value={ categoryName }
+                                onChange={ e => setCategoryName(e.target.value) }
+                            />
+                        </div>
+                        <div className="flex items-center gap-3">
+                            <label className="w-1/4 text-xl text-white">Index</label>
+                            <input type="text" className="w-3/4 py-2 px-4 rounded-lg text-black" 
+                                value={ categoryIndex }
+                                onChange={ e => setCategoryIndex(e.target.value) }
+                            />
+                        </div>
                     </div>
                     <div className="flex gap-2">
                         <button type="submit" className="px-12 py-2 rounded-lg bg-primary text-white text-lg font-semibold">
@@ -110,6 +122,7 @@ export default function CategoriesPage() {
                             onClick={() => {
                                 setEditedCategory(null)
                                 setCategoryName('')
+                                setCategoryIndex()
                             }}>
                             Cancel
                         </button>
@@ -121,6 +134,7 @@ export default function CategoriesPage() {
                 { categories?.length > 0 && categories.map(cat => (
                     <div key={cat._id} className="flex flex-col bg-gray-300 rounded-lg p-4 px-4 text-black gap-4 items-center justify-center">
                         <div className="grow text-2xl font-bold">{cat.name}</div>
+                        <h1 className="text-xl font-bold">Index: {cat.index}</h1>
                         <div className="flex gap-1">
                             <button className="p-3 mt-2 rounded-lg bg-primary text-white text-lg font-semibold"
                                 onClick={() => {

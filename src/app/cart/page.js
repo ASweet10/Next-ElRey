@@ -70,16 +70,16 @@ export default function CartPage () {
     if (cartProducts?.length === 0) {
         return (
             <section className="mt-8 text-center">
-                <h1 className="text-4xl text-primary font-bold">Cart</h1>
+                <h1 className="text-4xl text-yellow-700 font-bold font-cormorant">Cart</h1>
                 <p className="mt-4">Your cart is empty.</p>
             </section>
         )
     }
     
     return (
-        <section className="mt-8">
-            <h2 className="font-bold text-center text-5xl text-primary mb-8">Cart</h2>
-            <div className="mt-4 grid gap-4 grid-cols-2">
+        <section className="m-8">
+            <h2 className="font-bold text-center text-5xl text-yellow-700 font-cormorant mb-8">Cart</h2>
+            <div className="mt-4 grid gap-4 grid-cols-1 md:grid-cols-2">
                 <div>
                     { cartProducts?.length === 0 && (
                         <div>No items in cart</div>
@@ -106,7 +106,7 @@ export default function CartPage () {
                             setAddressProp={handleAddressChange}
                         />
                         <button type="submit"
-                            className="flex p-2 items-center justify-center gap-2 text-xl bg-primary rounded-lg"
+                            className="flex p-2 items-center justify-center gap-2 text-xl bg-yellow-700 rounded-lg"
                         >
                             Pay ${subTotal !== 0 ? subTotal + 5 : 0}
                         </button>

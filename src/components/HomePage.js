@@ -2,7 +2,12 @@
 import MenuItem from "./MenuItem"
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import { LuCrown } from "react-icons/lu"
+import Chef from "./Chef"
+import VideoHero from "./VideoHero"
+import Hero from "./Hero"
+import Link from "next/link"
+import Contact from "./Contact"
+import { FaRegArrowAltCircleRight } from "react-icons/fa"
 
 export default function HomePage () {
     const [ bestSellers, setBestSellers ] = useState([])
@@ -16,33 +21,34 @@ export default function HomePage () {
     }, [])
     
     return (
-        <div className="py-20">
+        <div className="">
+            <Hero />
             <section className="py-16">
                 <div className="text-center pb-10">
-                    <h1 className="text-2xl text-gray-400">Check Out</h1>
-                    <h2 className="text-4xl md:text-6xl text-primary">Our Best Sellers</h2>
+                    <h1 className="text-xl text-gray-400">Check Out</h1>
+                    <h1 className='text-yellow-600 text-5xl capitalize font-cormorant'>Our Best Sellers</h1>
                 </div>
-                <div className="grid md:grid-cols-3 gap-6">
-                    {bestSellers?.length > 0 && bestSellers.map(item => (
+                <div className="grid md:grid-cols-4 gap-12 md:gap-0">
+                    {bestSellers?.length > 0 && bestSellers.slice(1, 5).map(item => (
                         <div key={item._id}>
                             <MenuItem { ...item } />
                         </div>
                     ))}
                 </div>
+                <div className="flex justify-center mt-12">
+                    <Link href={'/menu'} 
+                        className="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-8 py-4 rounded-full flex items-center gap-2"
+                    >
+                        Full Menu
+                        <FaRegArrowAltCircleRight className='text-xl' />
+                    </Link>
+                </div>
+
             </section>
 
-            <section className="text-center pt-20" id="contact">
-                <div className="py-4 flex flex-col items-center">
-                    <LuCrown className="text-7xl text-white" />
-                    <h4 className="text-3xl font-bold text-white">El Rey</h4>
-                </div>
-                <h3 className="uppercase text-white text-5xl font-bold ">Contact Us</h3>
-                <div className="text-gray-500 md:text-xl max-w-2xl mx-auto mt-8 flex flex-col gap-4">
-                    <p>82 West Park Street, San Antonio TX 78112</p>
-                    <p>(555) 663-8892</p>
-                    <p>info@elreysanantonio.com</p>
-                </div>
-            </section>
+            <Chef />
+            <VideoHero />
+            <Contact />
         </div>
     )
 }
