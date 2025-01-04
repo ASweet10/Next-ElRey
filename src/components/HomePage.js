@@ -8,6 +8,7 @@ import Hero from "./Hero"
 import Link from "next/link"
 import Contact from "./Contact"
 import { FaRegArrowAltCircleRight } from "react-icons/fa"
+import HeroImages from "./HeroImages"
 
 export default function HomePage () {
     const [ bestSellers, setBestSellers ] = useState([])
@@ -23,6 +24,7 @@ export default function HomePage () {
     return (
         <div className="">
             <Hero />
+            <HeroImages />
             <section className="py-16">
                 <div className="text-center pb-10">
                     <h1 className="text-xl text-gray-400">Check Out</h1>
@@ -45,6 +47,7 @@ export default function HomePage () {
                 </div>
 
             </section>
+
 
             <Chef />
             <VideoHero />

@@ -26,8 +26,8 @@ export default function Header() {
         <header className='pt-4 md:px-12 h-20 app__graniteBg z-50'>
           {/* Mobile */}
           <div className='flex gap-20 md:hidden px-12'>
-            <Link className='text-white flex gap-2 text-3xl font-semibold items-center' href={'/'}>
-              <LuCrown className='text-white text-4xl'/>
+            <Link className='text-white flex gap-2 text-xl md:text-3xl font-semibold items-center' href={'/'}>
+              <LuCrown className='text-white text-3xl'/>
               El Rey
             </Link>
 

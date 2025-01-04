@@ -37,17 +37,18 @@ section.hero {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
+  background-color: transparent;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  border: solid 3px transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background-color: white;
   border-radius: 5px;
 }
 
