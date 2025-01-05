@@ -15,14 +15,14 @@ export default function HeroImages() {
         { 
             id: 1,
             src: '/panel-appetizer.jpg',
-            title: 'Many Classic Appetizers',
+            title: 'Classic Appetizers',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             cta: 'Order Now',  
         },
         { 
             id: 2,
             src: '/panel-wine.jpg',
-            title: 'Browse our list of wine and spirits',
+            title: 'Browse our wines and spirits',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             cta: 'See list', 
         },
