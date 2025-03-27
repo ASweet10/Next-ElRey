@@ -77,36 +77,36 @@ export default function CartPage () {
     }
     
     return (
-        <section className="m-8">
-            <h2 className="font-bold text-center text-5xl text-yellow-700 font-cormorant mb-8">Cart</h2>
-            <div className="mt-4 grid gap-4 grid-cols-1 md:grid-cols-2">
-                <div>
+        <section className="app__graniteBg py-36 px-4 md:px-12">
+            <h2 className="font-bold text-center text-5xl text-white mb-8">Cart</h2>
+            <div className="mt-4 flex flex-col md:flex-row gap-4">
+                <div className="w-full md:w-1/2">
                     { cartProducts?.length === 0 && (
                         <div>No items in cart</div>
                     )}
                     { cartProducts?.length > 0 && cartProducts.map((product, index) => (
                         <CartProduct key={index} product={product} onRemove={removeCartProduct} index={index} />
                     ))}
-                    <div className="py-2 text-right pr-16 text-xl">
+                    <div className="py-2 text-right pr-16 text-xl text-white">
                         Subtotal: <span className="font-bold">${subTotal}</span>
                     </div>
-                    <div className="py-2 text-right pr-16 text-xl">
+                    <div className="py-2 text-right pr-16 text-xl text-white">
                         Delivery Fee: <span className="font-bold">$5</span>
                     </div>
-                    <div className="py-2 text-right pr-16 text-xl">
+                    <div className="py-2 text-right pr-16 text-xl text-white">
                         Total: <span className="font-bold">${subTotal + 5}</span>
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-2 mx-6 bg-gray-900 rounded-lg p-4">
-                    <h2 className="font-bold text-xl">Checkout</h2>
+                <div className="flex flex-col w-full md:w-1/2 h-[440px] gap-2 bg-gray-900 rounded-lg p-4">
+                    <h2 className="font-bold text-xl text-center md:text-start text-white">Checkout</h2>
                     <form className="flex flex-col gap-2" onSubmit={proceedToCheckout}>
                         <AddressInputs 
                             addressProps={address}
                             setAddressProp={handleAddressChange}
                         />
                         <button type="submit"
-                            className="flex p-2 items-center justify-center gap-2 text-xl bg-yellow-700 rounded-lg"
+                            className="flex p-2 items-center justify-center gap-2 text-xl bg-yellow-700 rounded-lg text-white"
                         >
                             Pay ${subTotal !== 0 ? subTotal + 5 : 0}
                         </button>

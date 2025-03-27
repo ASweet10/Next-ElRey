@@ -4,7 +4,7 @@ import { FaRegTrashAlt } from "react-icons/fa"
 
 export default function CartProduct({product, onRemove, index}) {
     return (
-        <div className="flex items-center gap-4 mb-2 border-b py-2" key={product._id}>
+        <div className="flex items-center gap-4 mb-2 border-b py-2 text-white" key={product._id}>
             <div className="w-24">
                 <Image width={200} height={200} src={product.image} alt={''} />
             </div>

@@ -2,7 +2,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
-import { FaLessThan } from "react-icons/fa"
 import { signIn } from "next-auth/react"
 
 export default function RegisterPage () {
@@ -33,7 +32,7 @@ export default function RegisterPage () {
     }
 
     return (
-        <section className="py-24">
+        <section className="app__graniteBg pt-40 md:pt-52 min-h-[100vh]">
             <h1 className="text-center text-primary text-4xl mb-4">Register</h1>
             
             { userCreated && (
@@ -51,21 +50,21 @@ export default function RegisterPage () {
 
             <form className="flex flex-col items-center justify-center" onSubmit={handleFormSubmit}>
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" 
-                    className="w-1/2 my-4 rounded-xl border p-2 border-primary text-black disabled:bg-slate-500" disabled={creatingUser}
+                    className="w-4/5 md:w-1/3 my-4 rounded-xl border p-2 border-primary text-black disabled:bg-slate-500" disabled={creatingUser}
                 />
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"
-                    className="w-1/2 my-4 rounded-xl border p-2 border-primary text-black disabled:bg-slate-500" disabled={creatingUser}
+                    className="w-4/5 md:w-1/3 my-4 rounded-xl border p-2 border-primary text-black disabled:bg-slate-500" disabled={creatingUser}
                 />
-                <button className="w-1/2 font-semibold px-6 py-2 rounded-xl border border-primary disabled:cursor-not-allowed disabled:bg-red-400" 
+                <button className="w-4/5 md:w-1/3 font-semibold px-6 py-2 rounded-xl border border-primary hover:bg-primary disabled:cursor-not-allowed disabled:bg-red-400 text-white" 
                     type="submit" disabled={creatingUser}
                 >
                     Register
                 </button>
                 <div className="my-4 text-center text-gray-500">or login with provider</div>
                 <button onClick={() => signIn('google', {callbackUrl: '/'})}
-                    className="flex gap-4 justify-center items-center w-1/2 text-black font-semibold px-6 py-3 rounded-xl bg-gray-300 border border-primary"
+                    className="flex gap-4 justify-center items-center w-4/5 md:w-1/3 text-black font-semibold px-6 py-3 rounded-xl bg-gray-300 border border-primary"
                 >
-                    <Image src='/logo-google.png' width={24} height={24} alt='google-logo' className='object-contain' />
+                    <Image src='/google-logo.png' width={24} height={24} alt='google-logo' className='object-contain' />
                     Login with Google
                 </button>
 

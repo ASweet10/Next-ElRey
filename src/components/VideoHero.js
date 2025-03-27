@@ -1,6 +1,5 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react'
-import Image from "next/image"
 
 export default function VideoHero() {
     const [ videoIndex, setVideoIndex ] = useState(0)
@@ -25,7 +24,7 @@ export default function VideoHero() {
 
     return (
         <section className="">
-            <div className="relative w-full h-[500px] md:h-[850px]">
+            <div className="relative w-full h-[500px] md:h-[920px]">
                 { videoSources.map((src, index) => (
                     <video key={index} ref={element => (videoRefs.current[index] = element)} src={src} muted
                         style={{
@@ -37,7 +36,6 @@ export default function VideoHero() {
                     />
                 ))}
             </div>
-
         </section>
     )
 }

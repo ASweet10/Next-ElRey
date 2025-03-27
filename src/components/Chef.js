@@ -4,7 +4,7 @@ import { RiDoubleQuotesL } from "react-icons/ri"
 
 const Chef = () => {
   return (
-    <section className="app__graniteBg px-20 py-12 flex flex-col md:flex-row justify-between gap-4 items-center min-h-[100vh]">
+    <section className="app__graniteBg px-20 pt-32 pb-20 flex flex-col md:flex-row justify-between gap-4 items-center min-h-[100vh]">
         <div className="flex flex-1 w-full justify-center items-center">
             {/* <div className="bg-yellow-600 w-60 h-60 z-50 pl-40 pt-60"></div> */}
             <Image src="/chef.jpg" alt="chef" width={450} height={1000} />
@@ -12,7 +12,7 @@ const Chef = () => {
 
         <div className="flex flex-1 flex-col justify-center items-center md:items-start">
             <div className='m2-4 ml-2'>
-                <p className='font-cormorant'>A word from the Chef</p>
+                <p className='font-cormorant text-white'>A word from the Chef</p>
             </div>
 
             <h1 className='text-yellow-600 text-5xl md:text-6xl capitalize font-cormorant'>Our Mission</h1>

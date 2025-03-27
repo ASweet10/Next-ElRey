@@ -1,7 +1,5 @@
 'use client'
-import Image from 'next/image'
 import Link from 'next/link'
-import { GiChicken } from "react-icons/gi"
 import { RxHamburgerMenu } from "react-icons/rx"
 import { LuCrown } from "react-icons/lu"
 import { FaCartShopping } from "react-icons/fa6"
@@ -11,21 +9,20 @@ import { useContext, useState } from 'react'
 
 export default function Header() {
   const session = useSession() // Current login session; Logout to refresh
-  console.log(session)
   const status = session?.status
   const [ navOpen, setNavOpen ] = useState(false)
 
   const userData = session?.data?.user
   let userName = userData?.name || userData?.email
   if( userName && userName.includes(' ')) {
-    userName = userName.split(' ')[0] // Split name around space if present & use first element
+    userName = userName.split(' ')[0] // Split name around space if present; use first element
   }
   const { cartProducts } = useContext(CartContext)
 
     return (
-        <header className='pt-4 md:px-12 h-20 app__graniteBg z-50'>
+        <header className='fixed transform transition-all duration-200 pt-6 h-24 app__graniteBg w-full z-50 text-white'>
           {/* Mobile */}
-          <div className='flex gap-20 md:hidden px-12'>
+          <div className='flex gap-20 md:hidden px-6'>
             <Link className='text-white flex gap-2 text-xl md:text-3xl font-semibold items-center' href={'/'}>
               <LuCrown className='text-white text-3xl'/>
               El Rey
@@ -47,7 +44,7 @@ export default function Header() {
           {/* Mobile Popup */}
           {navOpen && (
             <div onClick={() => setNavOpen(false)}
-              className='flex flex-col absolute w-full md:hidden p-3 bg-gray-200 rounded-lg mt-2 gap-4 text-center text-yellow-700 text-xl font-semibold'
+              className='flex flex-col absolute w-full md:hidden p-3 app__graniteBg rounded-lg mt-2 gap-4 text-center text-yellow-700 text-xl font-semibold'
             >
               <Link href={'/menu'}>Menu</Link>
               <Link href={'/about'}>About</Link>
@@ -66,10 +63,10 @@ export default function Header() {
               {/* May need to be 'unauthenticated' */}
               { status !== 'authenticated' && (
                 <>
-                  <Link href={'/login'} className='text-white rounded-full px-6 py-2'>
+                  <Link href={'/login'} className='text-white rounded-full px-6'>
                     Login
                   </Link>
-                  <Link href={'/register'} className='bg-yellow-700 primary text-white rounded-full px-6 py-2'>
+                  <Link href={'/register'} className='text-white rounded-full px-6 pb-4'>
                     Register
                   </Link>
                 </>
@@ -78,25 +75,36 @@ export default function Header() {
           )}
 
           {/* Desktop */}
-          <div className='hidden md:flex justify-between items-center px-2 md:px-8'>
-            <Link className='text-white flex gap-2 text-4xl font-semibold items-center' href={'/'}>
-              <LuCrown className='text-white text-5xl'/>
-              El Rey
-            </Link>
-            <nav className='flex gap-4 font-semibold items-center'>
-              <div className='flex gap-6 text-xl'>
-                <Link href={'/menu'}>Menu</Link>
-                <Link href={'/about'}>About</Link>
-                <Link href={'/#contact'}>Contact</Link>
-              </div>
-              <div className='flex gap-4 items-center text-xl'>
+          <div className='hidden md:flex items-center justify-center gap-10'>
 
+            <nav className='flex gap-4 font-semibold items-center'>
+              <div className='flex gap-8 text-xl'>
+                <Link className='hover:text-yellow-600' href={'/menu'}>Menu</Link>
+                <Link className='hover:text-yellow-600' href={'/about'}>About</Link>
+                <Link className='hover:text-yellow-600' href={'/#contact'}>Contact</Link>
+              </div>
+            </nav>
+
+            <Link className='text-white flex gap-2 text-4xl font-semibold items-center hover:text-yellow-600' href={'/'}>
+              <LuCrown className='text-white text-5xl'/>
+              <h1>El Rey</h1>
+            </Link>
+
+            <Link href={'/cart'} className='relative flex items-center gap-1 hover:text-yellow-600'>
+                  <h1 className='font-bold text-xl'>Order</h1>
+                  <FaCartShopping className='text-2xl'/>
+                  { cartProducts?.length > 0 && (
+                    <span className='absolute -top-3.5 -right-3.5 bg-yellow-600 text-white py-[1px] px-2 rounded-full'>{cartProducts?.length}</span>
+                  )}
+            </Link>
+
+            <div className='flex items-center text-xl'>
                 { status === 'authenticated' && (
                   <>
                   <Link href={'/profile'}>Hello {userName}</Link>
                   <button 
                     onClick={() => signOut()} 
-                    className='bg-yellow-700 hover:bg-yellow-600 text-white rounded-full px-6 py-2'
+                    className='bg-yellow-700 hover:bg-yellow-600 text-white rounded-full py-2'
                   >
                     Logout
                   </button>
@@ -104,25 +112,16 @@ export default function Header() {
                 )}
                 {/* May need to be 'unauthenticated' */}
                 { status !== 'authenticated' && (
-                  <>
-                    <Link href={'/login'} className='text-white rounded-full px-6 py-2'>
+                  <div className='flex gap-6 py-2'>
+                    <Link href={'/login'} className='text-white rounded-full font-semibold hover:text-yellow-600'>
                       Login
                     </Link>
-                    <Link href={'/register'} className='bg-yellow-700 hover:bg-yellow-600 text-white rounded-full px-6 py-2'>
+                    <Link href={'/register'} className='text-white rounded-full font-semibold hover:text-yellow-600'>
                       Register
                     </Link>
-                  </>
+                  </div>
                 )}
-                
-                <Link href={'/cart'} className='relative'>
-                  <FaCartShopping className='text-2xl'/>
-                  { cartProducts?.length > 0 && (
-                    <span className='absolute -top-3.5 -right-3.5 bg-yellow-700 hover:bg-yellow-600 text-white py-[1px] px-1 rounded-full'>{cartProducts?.length}</span>
-                  )}
-
-                </Link>
               </div>
-            </nav>
           </div>
       </header>
 )}
