@@ -7,7 +7,7 @@ export default function GalleryHero() {
     const galleryOne = [
         { id: 0, src: '/steak.jpg',},
         { id: 1, src: '/tacos3.jpg',},
-        { id: 2, src: '/nachos.jpg',},
+        { id: 2, src: '/tacos6.jpg',},
         { id: 3, src: '/tacos4.jpg',},
         { id: 4, src: '/tacos5.jpg',},
         { id: 5, src: '/nachos2.jpg',},
