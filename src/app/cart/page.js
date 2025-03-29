@@ -69,9 +69,9 @@ export default function CartPage () {
 
     if (cartProducts?.length === 0) {
         return (
-            <section className="mt-8 text-center">
-                <h1 className="text-4xl text-yellow-700 font-bold font-cormorant">Cart</h1>
-                <p className="mt-4">Your cart is empty.</p>
+            <section className="pt-36 text-center">
+                <h1 className="text-5xl text-white font-bold ">Cart</h1>
+                <p className="mt-4 text-lg text-white">Your cart is empty.</p>
             </section>
         )
     }
