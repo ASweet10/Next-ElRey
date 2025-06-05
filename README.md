@@ -9,7 +9,8 @@ Restaurant website
 
 ## Tech
 - Next.js
-- Express
+- Tailwind CSS
+- Express/Node.js
 - MongoDB
 - Stripe
 
