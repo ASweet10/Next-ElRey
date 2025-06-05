@@ -13,7 +13,7 @@ Restaurant website
 - MongoDB
 - Stripe
 
-## Live Demo
+## Demo
 [El Rey](https://next-js-food-order-el-rey.vercel.app)
 
 ## Notes
