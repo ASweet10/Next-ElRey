@@ -1,18 +1,13 @@
-# El Rey
-Restaurant website
-
-## Features
-- Admin panel for owners to set prices, manage orders, etc.
-- Google Credentials signup option
-- ContextAPI used for cart and orders
-- Stripe checkout integration
-
+# El Rey restaurant site
 ## Tech
 - Next.js
 - Tailwind CSS
 - Express/Node.js
 - MongoDB
-- Stripe
+- Stripe checkout
+- Google credentials signup
+- Context API for cart/orders
+- Custom admin panel for owners
 
 ## Demo
 [El Rey](https://next-js-food-order-el-rey.vercel.app)
