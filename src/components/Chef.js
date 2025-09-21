@@ -4,7 +4,7 @@ import { RiDoubleQuotesL } from "react-icons/ri"
 
 const Chef = () => {
   return (
-    <section className="app__graniteBg px-20 pt-32 pb-20 flex flex-col md:flex-row justify-between gap-4 items-center min-h-[100vh]">
+    <section className="px-20 pt-32 pb-20 flex flex-col md:flex-row justify-between gap-4 items-center min-h-[100vh]">
         <div className="flex flex-1 w-full justify-center items-center">
             {/* <div className="bg-yellow-600 w-60 h-60 z-50 pl-40 pt-60"></div> */}
             <Image src="/chef.jpg" alt="chef" width={450} height={1000} />
@@ -12,18 +12,18 @@ const Chef = () => {
 
         <div className="flex flex-1 flex-col justify-center items-center md:items-start">
             <div className='m2-4 ml-2'>
-                <p className='font-cormorant text-white'>A word from the Chef</p>
+                <p className='font-cormorant text-lg text-gray-800'>A word from the Chef</p>
             </div>
 
-            <h1 className='text-yellow-600 text-5xl md:text-6xl capitalize font-cormorant'>Our Mission</h1>
-            <div className="flex flex-col w-full mt-8 md:mt-20">
+            <h1 className='text-gray-800 text-5xl md:text-7xl uppercase font-alfa'>Our Mission</h1>
+            <div className="flex flex-col w-full mt-8 md:mt-12">
                 <div className='flex justify-start items-end'>
-                    <RiDoubleQuotesL className="text-white w-16 h-14" />
-                    <p className='text-white font-normal capitalize text-base'>
+                    <RiDoubleQuotesL className="text-gray-800 w-16 h-14" />
+                    <p className='text-gray-800 font-normal capitalize text-base'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </p>
                 </div>
-                <p className='text-white font-normal capitalize text-base'>
+                <p className='text-gray-800 font-normal capitalize text-base'>
                     Pellentesque venenatis enim hendrerit mi bibendum porttitor. 
                     Duis commodo, metus id mattis dignissim, leo lorem convallis sem, non feugiat sem nunc at nisi. Donec ut consequat augue. 
                     Phasellus at orci id orci blandit laoreet. Ut non dolor eu justo rutrum volutpat viverra nec enim. Ut eu gravida mi, in scelerisque libero. 
@@ -32,9 +32,9 @@ const Chef = () => {
             </div>
 
             <div className='w-full mt-12'>
-                <p className='text-yellow-600 text-2xl font-cormorant'>Carlos Guzman</p>
-                <p className='text-white font-normal capitalize text-sm'>Head Chef & Co-Founder</p>
-                <Image src="/signature.png" alt="signature" width={200} height={100} className='md:mr-12' />
+                <p className='text-black text-2xl font-cormorant'>Carlos Guzman</p>
+                <p className='text-gray-800 font-normal capitalize text-base'>Head Chef & Co-Founder</p>
+                <Image src="/signature_black.png" alt="signature" width={200} height={100} className='md:mr-12' />
             </div>
         </div>
     </section>

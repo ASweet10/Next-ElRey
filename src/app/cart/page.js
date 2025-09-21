@@ -70,15 +70,15 @@ export default function CartPage () {
     if (cartProducts?.length === 0) {
         return (
             <section className="pt-36 text-center">
-                <h1 className="text-5xl text-white font-bold ">Cart</h1>
+                <h1 className="text-5xl md:text-7xl text-gray-800 font-bold">Cart</h1>
                 <p className="mt-4 text-lg text-white">Your cart is empty.</p>
             </section>
         )
     }
     
     return (
-        <section className="app__graniteBg py-36 px-4 md:px-12">
-            <h2 className="font-bold text-center text-5xl text-white mb-8">Cart</h2>
+        <section className="py-40 px-4 md:px-12">
+            <h2 className="font-bold text-center text-5xl md:text-7xl text-gray-800 mb-8">Cart</h2>
             <div className="mt-4 flex flex-col md:flex-row gap-4">
                 <div className="w-full md:w-1/2">
                     { cartProducts?.length === 0 && (
@@ -87,13 +87,13 @@ export default function CartPage () {
                     { cartProducts?.length > 0 && cartProducts.map((product, index) => (
                         <CartProduct key={index} product={product} onRemove={removeCartProduct} index={index} />
                     ))}
-                    <div className="py-2 text-right pr-16 text-xl text-white">
+                    <div className="py-2 text-right pr-16 text-xl text-gray-800">
                         Subtotal: <span className="font-bold">${subTotal}</span>
                     </div>
-                    <div className="py-2 text-right pr-16 text-xl text-white">
+                    <div className="py-2 text-right pr-16 text-xl text-gray-800">
                         Delivery Fee: <span className="font-bold">$5</span>
                     </div>
-                    <div className="py-2 text-right pr-16 text-xl text-white">
+                    <div className="py-2 text-right pr-16 text-xl text-gray-800">
                         Total: <span className="font-bold">${subTotal + 5}</span>
                     </div>
                 </div>

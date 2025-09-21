@@ -14,7 +14,7 @@ export default function GalleryHero() {
     ]
 
     return (
-        <section className="app__graniteBg pt-12 md:pt-0">    
+        <section className="pt-12 md:pt-0">    
             <div className='flex flex-col md:flex-row w-full'>
                 <div className='w-full md:w-2/5'>
                     <div className="relative overflow-hidden">

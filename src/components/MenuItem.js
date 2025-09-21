@@ -49,11 +49,11 @@ export default function MenuItem (menuItem) {
             {showPopup && (
                 <div 
                     onClick={() => setShowPopup(false)}
-                    className="flex items-center justify-center fixed top-0 left-0 right-0 bg-black/80 min-h-[100vh]"
+                    className="flex items-center justify-center fixed top-0 left-0 right-0 bg-black/80 min-h-[100vh] z-60"
                 >
                     <div
                         onClick={e => e.stopPropagation()} // Stops setShowPopup from firing when user clicks modal item window
-                        className="bg-slate-800 my-8 p-4 rounded-lg max-w-md"
+                        className="bg-slate-900 my-8 p-4 rounded-lg max-w-md"
                     >
                         <div className="overflow-y-scroll p-2" style={{maxHeight: 'calc(100vh - 100px)'}}>
                             <h2 className="text-3xl font-bold text-center text-white mb-3">{name}</h2>
@@ -61,11 +61,11 @@ export default function MenuItem (menuItem) {
                             <p className="text-center text-gray-300 text-lg my-3">{description}</p>
                             { sizes?.length > 0 && (
                                 <div>
-                                    <h3 className="text-lg font-bold">Sizes</h3>
+                                    <h3 className="text-xl uppercase text-white font-bold">Sizes</h3>
                                     { sizes?.map(size => (
                                         <label 
                                             key={size._id}
-                                            className="flex items-center gap-2 p-2 border rounded-md mb-1"
+                                            className="flex items-center gap-2 p-2 border rounded-md mb-1 text-white"
                                         >
                                             <input 
                                                 type="radio" 
@@ -80,11 +80,11 @@ export default function MenuItem (menuItem) {
 
                             { extraIngredientPrices?.length > 0 && (
                                 <div>
-                                    <h3 className="text-lg font-bold">Extras</h3>
+                                    <h3 className="text-xl uppercase text-white font-bold">Extras</h3>
                                     { extraIngredientPrices?.map(extraIngredient => (
                                         <label 
                                             key={extraIngredient._id}
-                                            className="flex items-center gap-2 p-2 border rounded-md mb-1"
+                                            className="flex items-center gap-2 p-2 border rounded-md mb-1 text-white"
                                         >
                                             <input 
                                                 type="checkbox" 

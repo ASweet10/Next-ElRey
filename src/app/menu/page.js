@@ -17,10 +17,10 @@ export default function MenuPage() {
     }, [])
     
     return (
-        <section className="app__graniteBg py-36 flex flex-col gap-32 text-white">
+        <section className="py-48 flex flex-col gap-32">
             {categories?.length > 0 && categories.sort((a, b) => a.index - b.index).map(cat => (
                 <div key={cat.index} className="flex flex-col items-center text-center justify-center md:px-24">
-                    <div className="text-center">
+                    <div className="text-center text-gray-900">
                         <h1 className="text-6xl font-bold">{cat.name}</h1>
                     </div>
                     <div className="grid md:grid-cols-4 my-8">

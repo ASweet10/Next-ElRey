@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className='scroll-smooth app__graniteBg'>
+    <html lang="en" className='scroll-smooth app__bgImage'>
       <body className={poppins.className}>
         <main className='mx-auto'>
           <AppProvider>

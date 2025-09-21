@@ -12,7 +12,7 @@ export default function AddToCartButton({hasSizesOrExtras, basePrice, image, onC
     }
     
     return (
-        <button className="flex p-3 items-center gap-2 bg-yellow-700 hover:bg-yellow-600 rounded-lg" type="button"
+        <button className="flex p-3 items-center gap-2 bg-yellow-700 hover:bg-yellow-600 rounded-lg text-white" type="button"
             onClick={onClick}
             >
                 <span>Add to cart (from ${basePrice})</span>

@@ -1,19 +1,26 @@
 'use client'
 import Image from "next/image"
-import { useState } from "react"
-import { LuCrown } from "react-icons/lu"
 
 export default function AboutPage () {
 
     return (
-        <div className="app__graniteBg">
+        <div className="pt-48">
+            {/*
             <div className="relative w-full h-[400px] md:h-[600px]">
                 <Image src='/hero-fire.jpg' layout='fill' objectFit="cover" priority={true} alt='hero' />
                 <div className="absolute top-2/3 md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center ">
-                    <h2 className="uppercase text-white text-6xl md:text-7xl font-bold drop-shadow-lg">Serious Heat</h2>
+                    <h2 className="uppercase text-gray-900 text-6xl md:text-7xl font-bold drop-shadow-lg">San Antonio Heat</h2>
                 </div>
             </div>
-            <div className="text-gray-200 md:max-w-6xl py-20 mx-auto flex flex-col gap-20 items-center text-center p-4">
+            */}
+
+            <div className="text-center flex flex-col items-center justify-center">
+                <h1 className="text-6xl md:text-8xl uppercase font-extrabold bg-[url('/hero-fire.jpg')] bg-cover bg-center text-transparent bg-clip-text">
+                    San Antonio Heat
+                </h1>
+            </div>
+
+            <div className="text-gray-200 md:max-w-6xl py-20 mx-auto flex flex-col gap-20 items-center text-center p-4 text-gray-900">
                 <h4 className="text-3xl font-semibold uppercase">
                     We're all about the flavor. That's why we prepare everything daily in-house and avoid taking shortcuts.
                 </h4>
@@ -35,10 +42,9 @@ export default function AboutPage () {
                     <Image src={'/catering.jpg'} width={400} height={300} alt="catering" className="relative w-full md:w-1/2 rounded-lg" />
                     <p className="text-xl md:w-1/2 order-2">We also offer catering for events of up to 50 people. Please contact management for more details.</p>
                 </div>
-                <p className="text-xl">We are more than willing to change our menu based on customer feedback. Feel free to share your ideas!</p>
 
                 <div className="flex flex-col gap-6">
-                    <h4 className="text-3xl font-semibold text-white">Hours</h4>
+                    <h4 className="text-3xl font-bold uppercase">Hours</h4>
                     <p className="text-xl font-semibold">Sun, Mon, Tues, Wed, Thurs</p>
                     <p>10:00 AM - 8:00 PM</p>
                     <p className="text-xl font-semibold">Fri, Sat</p>

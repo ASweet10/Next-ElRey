@@ -12,7 +12,8 @@ const config: Config = {
         primary: '#6e1a20',
       },
       fontFamily: {
-        'cormorant': ['Cormorant']
+        'cormorant': ['Cormorant'],
+        'alfa': ['Alfa Slab One']
       }
     },
   },

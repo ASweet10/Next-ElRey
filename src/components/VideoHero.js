@@ -6,7 +6,6 @@ export default function VideoHero() {
     const videoRefs = useRef([])
     const videoSources = [
         '/hero_grill.mp4',
-        '/hero_ingredients.mp4',
         'hero_tortillas.mp4',
         '/hero_friends.mp4',
         'hero_barbecue.mp4',
