@@ -1,5 +1,4 @@
 import React from 'react'
-import { FaRegArrowAltCircleRight } from "react-icons/fa"
 import Link from "next/link"
 import Image from 'next/image'
 
@@ -13,10 +12,9 @@ const BannerHero = () => {
                 <h2 className='text-gray-800 text-base md:text-lg'>Plus tacos, enchiladas, and sides made to order.</h2>
                 <div className="flex gap-4 justify-center mt-8">
                     <Link href={'/menu'}
-                        className="bg-yellow-700 hover:bg-yellow-600 text-white font-bold text-xl px-4 py-3 rounded-md flex items-center gap-2 font-cormorant"
+                        className="bg-yellow-700 hover:bg-yellow-600 text-white font-bold text-xl px-6 py-3 rounded-md flex items-center gap-2 uppercase"
                     >
                         View Menu
-                        <FaRegArrowAltCircleRight className='text-xl' />
                     </Link>
                 </div> 
             </div>

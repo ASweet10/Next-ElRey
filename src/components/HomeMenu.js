@@ -1,7 +1,6 @@
 'use client'
 import MenuItem from "./MenuItem"
 import Link from "next/link"
-import { FaRegArrowAltCircleRight } from "react-icons/fa"
 
 export default function HomeMenu({items}) {
 
@@ -19,10 +18,9 @@ export default function HomeMenu({items}) {
             </div>
             <div className="flex justify-center mt-28">
                 <Link href={'/menu'} 
-                    className="bg-yellow-700 hover:bg-yellow-600 text-white font-bold text-xl px-4 py-3 rounded-md flex items-center gap-2 font-cormorant"
+                    className="bg-yellow-700 hover:bg-yellow-600 text-white font-bold text-xl px-6 py-3 rounded-md flex items-center gap-2 uppercase"
                 >
                     Full Menu
-                    <FaRegArrowAltCircleRight className='text-xl' />
                 </Link>
             </div>
         </section>
