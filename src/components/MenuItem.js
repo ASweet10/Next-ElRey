@@ -49,7 +49,7 @@ export default function MenuItem (menuItem) {
             {showPopup && (
                 <div 
                     onClick={() => setShowPopup(false)}
-                    className="flex items-center justify-center fixed top-0 left-0 right-0 bg-black/80 min-h-[100vh] z-60"
+                    className="flex items-center justify-center fixed top-0 left-0 right-0 bg-black/80 min-h-[100vh] z-[9999]"
                 >
                     <div
                         onClick={e => e.stopPropagation()} // Stops setShowPopup from firing when user clicks modal item window
@@ -98,12 +98,12 @@ export default function MenuItem (menuItem) {
                             )}
                             <div className="flex flex-col justify-center items-center gap-1 mt-4">
                                 <button onClick={handleAddToCartButtonClick}
-                                    className='bg-yellow-700 text-white rounded-full px-14 py-1'
+                                    className='bg-yellow-700 text-gray-900 rounded-lg px-14 py-1 font-bold'
                                 >
                                     Add to cart - <span className="text-2xl font-semibold">${selectedPrice}</span>
                                 </button>
                                 <button onClick={() => setShowPopup(false)}
-                                    className='bg-slate-200 text-black rounded-full px-24 py-2'
+                                    className='bg-slate-200 text-gray-900 rounded-lg px-24 py-2 font-semibold'
                                 >
                                     Cancel
                                 </button>
@@ -113,7 +113,11 @@ export default function MenuItem (menuItem) {
                     </div>
                 </div>
             )}
-            <MenuItemTile onAddToCart={handleAddToCartButtonClick} {...menuItem} />
+            <MenuItemTile 
+                onAddToCart={handleAddToCartButtonClick} 
+                {...menuItem} 
+                className={showPopup ? "pointer-events-none" : ""} // Disable hover effect if modal popup
+            />
         </>
     )
 }

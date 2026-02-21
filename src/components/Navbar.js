@@ -6,12 +6,14 @@ import { FaCartShopping } from "react-icons/fa6"
 import { useSession, signOut } from 'next-auth/react'
 import { CartContext } from './AppContext'
 import { useContext, useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 export default function Header() {
   const session = useSession() // Current login session; Logout to refresh
   const status = session?.status
-  const [ navOpen, setNavOpen ] = useState(false)
+  const pathname = usePathname()
 
+  const [ navOpen, setNavOpen ] = useState(false)
   const [ scrolled, setScrolled ] = useState(false)
 
   const userData = session?.data?.user
@@ -35,9 +37,12 @@ export default function Header() {
     return (
         <header 
           className={`
-            fixed top-0 w-full h-40 z-50 transition-all duration-300 text-white
-            ${scrolled ? "bg-gray-950 shadow-md translate-y-0 pt-6" : "pt-28 bg-transparent -translate-y-20"}
-          `}
+            fixed top-0 w-full h-20 z-50 transition-all duration-300
+            ${scrolled 
+              ? "bg-gray-950 shadow-md translate-y-0 pt-3 text-white" 
+              : `pt-28 bg-transparent -translate-y-20 ${pathname === "/" ? "text-white" : "text-gray-950"}`
+            }
+            `}
         >
 
         {/* Mobile */}
@@ -94,28 +99,18 @@ export default function Header() {
           )}
 
           {/* Desktop */}
-          <div className='hidden md:flex flex-col items-center justify-center gap-3'>
+          <div className='hidden md:flex items-center justify-center gap-3'>
 
-            <Link className='text-white flex gap-2 text-4xl font-semibold items-center hover:text-yellow-600' href={'/'}>
-              <LuCrown className='text-white text-5xl'/>
-              <h1>El Rey</h1>
+            <Link className='flex gap-1 pr-16 font-semibold items-center hover:text-yellow-600' href={'/'}>
+              <LuCrown className='text-5xl'/>
+              <h1 className='text-center text-3xl'>El Rey</h1>
             </Link>
-
-            <hr className='border w-3/4 border-white' />
 
             <nav className='flex gap-4 font-semibold items-center'>
               <div className='flex gap-8 text-xl'>
                 <Link className='hover:text-yellow-600' href={'/menu'}>Menu</Link>
                 <Link className='hover:text-yellow-600' href={'/about'}>About</Link>
                 <Link className='hover:text-yellow-600' href={'/#contact'}>Contact</Link>
-
-                <Link href={'/cart'} className='relative flex items-center gap-1 hover:text-yellow-600'>
-                  <h1 className='font-bold text-xl'>Order</h1>
-                  <FaCartShopping className='text-2xl'/>
-                  { cartProducts?.length > 0 && (
-                    <span className='absolute -top-3.5 -right-3.5 bg-yellow-600 text-white py-[1px] px-2 rounded-full'>{cartProducts?.length}</span>
-                  )}
-                </Link>
 
                 <div className='flex items-center text-xl'>
                   { status === 'authenticated' && (
@@ -131,19 +126,21 @@ export default function Header() {
                   )}
                   {/* May need to be 'unauthenticated' */}
                   { status !== 'authenticated' && (
-                    <Link href={'/login'} className='text-white rounded-full font-semibold hover:text-yellow-600'>
+                    <Link href={'/login'} className='rounded-full font-semibold hover:text-yellow-600'>
                       Login
                     </Link>
                   )}
                 </div>
+
+                <Link href={'/cart'} className='relative flex items-center gap-1 hover:text-yellow-600'>
+                  <h1 className='font-bold text-xl'>Order</h1>
+                  <FaCartShopping className='text-2xl'/>
+                  { cartProducts?.length > 0 && (
+                    <span className='absolute -top-3.5 -right-3.5 bg-yellow-600 text-white px-1.5 rounded-full'>{cartProducts?.length}</span>
+                  )}
+                </Link>
               </div>
             </nav>
-
-
-
-
-
-
           </div>
       </header>
 )}

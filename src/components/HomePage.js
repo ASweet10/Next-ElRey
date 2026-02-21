@@ -4,7 +4,6 @@ import VideoHero from "./VideoHero"
 import BannerHero from "./BannerHero"
 import GalleryHero from "./GalleryHero"
 import HomeMenu from "./HomeMenu"
-import Chef from "./Chef"
 import Contact from "./Contact"
 
 export default function HomePage () {
@@ -24,7 +23,6 @@ export default function HomePage () {
             <BannerHero />
             <GalleryHero />
             <HomeMenu items={bestSellers}/>
-            <Chef />
             <Contact />
         </div>
     )

@@ -1,22 +1,24 @@
-import { FaRegArrowAltCircleRight } from "react-icons/fa"
 
 export default function AddToCartButton({hasSizesOrExtras, basePrice, image, onClick }) {
     if (!hasSizesOrExtras) {
         return (
             <button onClick={onClick}
-                className="bg-yellow-700 hover:bg-yellow-600 text-white rounded-lg flex p-2"
+                className="flex py-3 px-10 items-center gap-2 bg-gray-950 hover:bg-gray-800 rounded-lg 
+                text-yellow-600  text-xl uppercase font-bold
+                transition-transform duration-1000" 
             >
-                Add to cart ${basePrice}
+                Add to cart - ${basePrice}
             </button>
         )
     }
     
     return (
-        <button className="flex p-3 items-center gap-2 bg-yellow-700 hover:bg-yellow-600 rounded-lg text-white" type="button"
+        <button 
+            className="flex py-3 px-10 items-center gap-2 bg-gray-950 hover:bg-gray-800 rounded-lg text-white transition-transform duration-1000" 
+            type="button"
             onClick={onClick}
             >
-                <span>Add to cart (from ${basePrice})</span>
-            <FaRegArrowAltCircleRight className='text-white'/>
+                <span className="text-yellow-600 text-xl uppercase font-bold">Order</span>
         </button>
     )
 }
