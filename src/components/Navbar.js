@@ -107,18 +107,18 @@ export default function Header() {
             </Link>
 
             <nav className='flex gap-4 font-semibold items-center'>
-              <div className='flex gap-8 text-xl'>
+              <div className='flex gap-8 text-xl items-center'>
                 <Link className='hover:text-yellow-600' href={'/menu'}>Menu</Link>
                 <Link className='hover:text-yellow-600' href={'/about'}>About</Link>
                 <Link className='hover:text-yellow-600' href={'/#contact'}>Contact</Link>
 
-                <div className='flex items-center text-xl'>
+                <div className='flex items-center text-xl gap-2 px-2'>
                   { status === 'authenticated' && (
                     <>
-                    <Link href={'/profile'}>Hello {userName}</Link>
+                    <Link href={'/profile'}>{userName}</Link>
                     <button 
                       onClick={() => signOut()} 
-                      className='bg-yellow-700 hover:bg-yellow-600 text-white rounded-full py-2'
+                      className='bg-yellow-700 hover:bg-yellow-600 text-white rounded-full p-3'
                     >
                       Logout
                     </button>

@@ -4,9 +4,9 @@ import { useProfileInfo } from "@/hooks/useProfileInfo"
 import { useState, useEffect } from "react"
 import { databaseTimeForHuman } from "@/libs/datetime"
 import Link from "next/link"
+import { Order } from "@/models/orders"
 
 export default function OrdersPage() {
-    const [ isAdmin, setIsAdmin ] = useState('')
     const [ orders, setOrders ] = useState([])
     const [ ordersLoading, setOrdersLoading ] = useState(true)
     const { loading, data: profileData } = useProfileInfo()
@@ -25,15 +25,18 @@ export default function OrdersPage() {
         })
     }
 
+    if(ordersLoading) {
+        return (
+            <section className="min-h-screen justify-center flex flex-col items-center py-10 bg-black/60 text-white">
+                <div className="text-xl">Orders loading...</div>
+            </section>
+        )
+    }
 
     return (
-        <section className="py-16 flex flex-col items-center">
+        <section className="flex flex-col items-center min-h-screen py-10 bg-black/60">
             <AdminTabs isAdmin={profileData.admin}/>
             <div className="mt-8 max-w-3xl">
-                { ordersLoading && (
-                    <div>Loading orders...</div>
-                )}
-
                 {orders?.length > 0 && orders.map( order => (
                     <div key={order._id} className="bg-gray-800 mb-2 p-4 rounded-lg grid grid-cols-2 gap-8">
                         <div className="flex flex-col gap-4">
@@ -42,8 +45,8 @@ export default function OrdersPage() {
                                     {order.paid ? 'Paid' : 'Not paid'}
                                 </span>
                             </div>
-                            <span className="font-bold text-lg">{order.userEmail}</span>
-                            <div className="text-sm">
+                            <span className="font-bold text-white text-xl uppercase">{order.userEmail}</span>
+                            <div className="text-gray-400">
                                 {order?.cartProducts?.map(product => product.name).join(', ')}
                             </div>
                         </div>
@@ -57,7 +60,6 @@ export default function OrdersPage() {
                     </div>
                 ))}   
             </div>
-            
         </section>
     )
 }

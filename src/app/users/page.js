@@ -19,22 +19,26 @@ export default function UsersPage() {
 
     if(!data.admin) {
         return (
-            <div className="flex pt-10 justify-center text-xl">Not an admin</div>
+            <section className="min-h-screen justify-center flex flex-col items-center py-10 bg-black/60 text-white">
+                <div className="text-xl">Not an admin</div>
+            </section>
         )
     }
     if(loading) {
         return (
-            <div className="flex pt-10 justify-center text-xl">Info loading...</div>
+            <section className="min-h-screen justify-center flex flex-col items-center py-10 bg-black/60 text-white">
+                <div className="text-xl">Info loading...</div>
+            </section>
         )
     }
 
     return (
-        <section className="py-16 flex flex-col items-center">
+        <section className="flex flex-col items-center min-h-screen pt-10 bg-black/60">
             <AdminTabs isAdmin={data.admin} />
             <div className="mt-8">
                 { users?.length > 0 && users.map(user => (
                     <div key={user._id} className="flex bg-gray-300 rounded-lg mb-2 p-4 text-black gap-3 items-center">
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 grow">
+                        <div className="flex justify-between gap-20 md:gap-40 grow">
                             <div className="text-gray-700">
                                 { user.name && (<span>{user.name}</span>) }
                                 { !user.name && (<span className="italic">No name</span>)}

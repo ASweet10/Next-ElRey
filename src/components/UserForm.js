@@ -22,22 +22,22 @@ export default function UserForm({ user, onSave }) {
         if (propertyName === 'streetAddress') setStreetAddress(value)
         if (propertyName === 'city') setCity(value)
         if (propertyName === 'zipCode') setZipCode(value)
-        if (propertyName === 'state') setUSState(value)
+        if (propertyName === 'usState') setUSState(value)
     }
     return (
-        <div className="md:flex gap-4 mx-4 items-center">
+        <div className="md:flex gap-4 mt-6 items-center">
             <div className="relative flex flex-col rounded-lg p-2 gap-2 justify-center">
                 <EditableImage link={image} setLink={setImage} />
             </div>
 
-            <form className="flex flex-col gap-2 text-black" 
+            <form className="flex flex-col gap-2 text-white" 
                 onSubmit={ e => onSave(e, {
                     name:userName, image, phone, email, streetAddress, city, zipCode, usState, admin
                 }) 
             }>
                 <label className="text-white">Name</label>
                 <input type="text" value={userName} onChange={ e => setUserName(e.target.value)} 
-                    placeholder="First and last name" className="block w-72 md:w-full p-2 rounded-lg" 
+                    placeholder="First and last name" className="block w-72 md:w-full p-2 rounded-lg text-gray-800" 
                 />
                 <label className="text-white">Email</label>
                 <input type="email" value={user?.email} disabled={true} className="w-72 md:w-full p-2 rounded-lg text-white" />

@@ -36,7 +36,7 @@ export default function EditableImage({link, setLink}) {
             )}                            
             <label className="flex w-full">
                 <input type="file" className="hidden" onChange={ handleImageFileChange }/>
-                <span className="p-2 mt-2 rounded-lg bg-primary cursor-pointer font-semibold">Change Avatar</span>
+                <span className="p-2 mt-2 rounded-lg bg-primary text-white cursor-pointer font-semibold">Change Avatar</span>
             </label>
         </>
     )

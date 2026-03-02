@@ -54,7 +54,7 @@ export default function NewMenuItemPage() {
     }
 
     return (
-        <section className="py-16 flex flex-col justify-center items-center">
+        <section className="min-h-screen flex flex-col justify-center items-center bg-black/60">
             <AdminTabs isAdmin={data.admin} />
             <div className="max-mw-md mx-auto mt-8">
                 <Link href={'/menu-items'} 

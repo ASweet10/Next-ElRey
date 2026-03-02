@@ -37,8 +37,8 @@ export default function OrderPage() {
     }
 
     return (
-        <section className="max-w-2xl mx-auto mt-8">
-            <div className=" text-center">
+        <section className="min-h-screen px-8 md:px-40 flex flex-col justify-center py-10 bg-black/60">
+            <div className="text-center">
                 <h1 className="text-4xl text-primary font-bold">Your Order</h1>
                 <div className="my-4">
                     <p>Thank you for your order.</p>

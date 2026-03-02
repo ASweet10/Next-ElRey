@@ -8,7 +8,7 @@ export default function AdminTabs ({ isAdmin }) {
     console.log(path)
 
     return (
-        <div className="flex justify-center gap-2 font-bold text-lg text-white mb-4 flex-wrap">
+        <div className="flex justify-center gap-2 font-bold text-lg text-white flex-wrap mt-40">
             <Link 
                 className={`rounded-full py-2 px-4 bg-primary" + ${path === '/profile' ? 'bg-primary' : 'bg-gray-800'}`} 
                 href={'/profile'}

@@ -83,17 +83,19 @@ export default function CategoriesPage() {
     }
     if(loading) {
         return (
-            <div className="flex pt-10 justify-center text-xl">Info loading...</div>
+            <section className="min-h-screen flex flex-col items-center py-10 bg-black/60 text-white">
+                <div className="text-xl">Info loading...</div>
+            </section>
         )
     }
 
     return (
-        <section className="py-16 flex flex-col items-center">
+        <section className="flex flex-col items-center min-h-screen py-10 bg-black/60">
             <AdminTabs isAdmin={data.admin} />
-            <form className="flex flex-col items-start max-w-md md:max-w-xl mx-auto gap-2" onSubmit={handleSubmitCategory}>
+            <form className="flex flex-col items-start max-w-md md:max-w-xl mx-auto gap-2 pt-10 text-white" onSubmit={handleSubmitCategory}>
                 <div className="flex flex-col gap-2 items-center">
                     <div className="flex flex-col gap-1">
-                        <label className="text-2xl text-center">
+                        <label className="text-2xl text-center font-bold uppercase">
                             { editedCategory ? 'Update: ' : 'New category' }
                             { editedCategory && (
                                 <> <b>{ editedCategory.name }</b> </>

@@ -32,7 +32,7 @@ export default function ProfilePage() {
             const response = await fetch('/api/profile', {
                 method: 'PUT',
                 headers: {'Content-Type': "application/json" },
-                body: JSON.stringify({data})
+                body: JSON.stringify(data)
             })
             if (response.ok)
                 resolve()
@@ -47,15 +47,19 @@ export default function ProfilePage() {
         })
     }
 
-    if(status === 'loading' || !profileFetched) {
-        return 'Loading...'
-    }
     if(status === 'unauthenticated') {
         return redirect('/login')
     }
+    if(status === 'loading' || !profileFetched) {
+        return (
+            <section className="min-h-screen justify-center flex flex-col items-center py-10 bg-black/60 text-white">
+                <div className="text-xl">Info loading...</div>
+            </section>
+        )
+    }
 
     return (
-        <section className="py-16 flex flex-col justify-center items-center">
+        <section className="flex flex-col justify-center items-center min-h-screen py-10 bg-black/60">
             <AdminTabs isAdmin={isAdmin} />
             <div className="max-w-xl mx-auto">
                 <UserForm user={user} onSave={handleUpdateProfileInfo} />
