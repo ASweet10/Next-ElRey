@@ -72,7 +72,6 @@ export default function Header() {
             >
               <Link href={'/menu'}>Menu</Link>
               <Link href={'/about'}>About</Link>
-              <Link href={'/#contact'}>Contact</Link>
 
               { status === 'authenticated' && (
                 <>
@@ -110,7 +109,6 @@ export default function Header() {
               <div className='flex gap-8 text-xl items-center'>
                 <Link className='hover:text-yellow-600' href={'/menu'}>Menu</Link>
                 <Link className='hover:text-yellow-600' href={'/about'}>About</Link>
-                <Link className='hover:text-yellow-600' href={'/#contact'}>Contact</Link>
 
                 <div className='flex items-center text-xl gap-2 px-2'>
                   { status === 'authenticated' && (

@@ -25,6 +25,10 @@
   background: #555;
 }
 
+html {
+  scroll-behavior: smooth; /* Smooth scrolling so browser can easily calculate final position for link section jumps */
+}
+
 .app__bgImage {
   background: url('/tacos6.jpg');
   background-position: center;

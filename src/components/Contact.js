@@ -3,7 +3,7 @@ import { LuCrown } from "react-icons/lu"
 
 const Contact = () => {
   return (
-    <section className="text-center pt-32" id="contact">
+    <section className="text-center pt-32">
         <div className="py-4 flex flex-col items-center">
             <LuCrown className="text-7xl text-gray-800" />
             <h4 className="text-3xl font-bold text-gray-800">El Rey</h4>

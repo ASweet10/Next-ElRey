@@ -15,11 +15,14 @@ export default function AboutPage () {
             </div>
             */}
 
-            <div className="text-gray-200 md:max-w-6xl py-20 mx-auto flex flex-col gap-12 items-center text-center p-4 text-gray-900">
-                <h4 className="text-3xl font-semibold uppercase font-extrabold bg-[url('/hero-fire.jpg')] bg-cover bg-center text-transparent bg-clip-text">
-                    We're all about the flavor. That's why we prepare everything daily in-house and avoid taking shortcuts.
+            <div className="md:max-w-6xl pb-20 mx-auto flex flex-col gap-12 items-center text-center p-4 text-gray-900">
+                <h4 className="text-4xl md:text-7xl uppercase font-extrabold bg-[url('/hero-fire.jpg')] bg-cover bg-center text-transparent bg-clip-text">
+                    We're all about the flavor.
                 </h4>
-                <div className="flex flex-col gap-6 md:flex-row items-center">
+                <h4 className="text-3xl md:text-5xl uppercase font-extrabold bg-[url('/hero-fire.jpg')] bg-cover bg-center text-transparent bg-clip-text">
+                    We prepare everything daily in-house and avoid taking shortcuts.
+                </h4>
+                <div className="flex flex-col gap-6 md:flex-row items-center pt-8">
                     <Image src={'/about.jpg'} width={400} height={300} alt="about" className="relative w-full md:w-1/2 rounded-lg" />
                     <p className="text-xl md:w-1/2 order-2">
                         We work with local farmers to ensure our ingredients are as fresh as possible.
