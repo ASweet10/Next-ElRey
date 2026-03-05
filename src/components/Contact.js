@@ -14,8 +14,9 @@ const Contact = () => {
             <p>info@elreysanantonio.com</p>
         </div>
 
-        <div className="border-t p-8 text-center text-gray-800">
-            &copy; 2025 El Rey Restaurant. All rights reserved
+        <div className="border-t p-8 text-center text-gray-800 flex flex-col gap-1">
+            <a href="https://www.flaticon.com/free-icons/taco" title="taco icons">Taco icon created by vectorsmarket15 - Flaticon</a>
+            <p>&copy; 2025 El Rey Restaurant. All rights reserved</p>
         </div>
     </section>
   )

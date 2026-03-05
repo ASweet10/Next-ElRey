@@ -98,12 +98,12 @@ export default function MenuItem (menuItem) {
                             )}
                             <div className="flex flex-col justify-center items-center gap-1 mt-4">
                                 <button onClick={handleAddToCartButtonClick}
-                                    className='bg-yellow-700 text-gray-900 rounded-lg px-14 py-1 font-bold'
+                                    className='bg-yellow-700 text-gray-900 rounded-lg w-52 p-1 font-bold'
                                 >
                                     Add to cart - <span className="text-2xl font-semibold">${selectedPrice}</span>
                                 </button>
                                 <button onClick={() => setShowPopup(false)}
-                                    className='bg-slate-200 text-gray-900 rounded-lg px-24 py-2 font-semibold'
+                                    className='bg-slate-200 text-gray-900 rounded-lg w-52 p-2 font-semibold'
                                 >
                                     Cancel
                                 </button>

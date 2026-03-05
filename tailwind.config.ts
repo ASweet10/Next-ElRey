@@ -13,7 +13,8 @@ const config: Config = {
       },
       fontFamily: {
         'cormorant': ['Cormorant'],
-        'alfa': ['Alfa Slab One']
+        'alfa': ['Alfa Slab One'],
+        'oswald': ['Oswald'],
       }
     },
   },

@@ -3,6 +3,7 @@
 - Tailwind CSS
 - Express/Node.js
 - MongoDB
+- Framer Motion
 - Stripe checkout
 - Google credentials signup
 - Context API for cart/orders

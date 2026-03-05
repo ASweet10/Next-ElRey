@@ -20,7 +20,26 @@ export default function HomePage () {
     return (
         <div>
             <VideoHero />
-            <BannerHero />
+            <BannerHero 
+                title={"Our Menu"}
+                subtitle={"Award-winning burritos and homemade salsas"}
+                description={"Experience hospitality at El Rey. From our award-winning burritos to our homemade salsas, every dish is crafted with fresh ingredients and a passion for flavor."}
+                imageSrc={"/salsa.jpg"}
+                buttonText={"View Menu"}
+                buttonLink={"/menu"}
+                reverse={false}
+                animationType = "side"
+            />
+            <BannerHero 
+                reverse={true}
+                title="Happy Hour"
+                subtitle="Hand-Crafted Margaritas & Spirits"
+                description="The perfect sunset companion. Join us for daily drink specials featuring our signature top-shelf margaritas, fresh-pressed lime juice, and a curated selection of artisanal tequilas."
+                imageSrc="/margaritas.jpg"
+                buttonText="See Specials"
+                buttonLink="/menu#margaritas-cocktails" // Move to specific part of menu page
+                animationType="bottom"
+            />
             <GalleryHero />
             <HomeMenu items={bestSellers}/>
             <Contact />
