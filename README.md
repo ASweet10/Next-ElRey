@@ -5,9 +5,9 @@
 - MongoDB
 - Framer Motion
 - Stripe checkout
-- Google credentials signup
+- Google credentials
 - Context API for cart/orders
-- Custom admin panel for owners
+- Custom admin panel
 
 ## Demo
 [El Rey](https://next-js-food-order-el-rey.vercel.app)
